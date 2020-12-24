@@ -11,145 +11,107 @@
 #include <cc65.h>
 #include <c64.h>
 #include "graphlib.h"
+#include "sort.h"
+#include "interrupt.h"
+#include "asteroids.h"
 
 // Stuff to support interrupt
-#define STACK_SIZE 32
-unsigned char stackSize[STACK_SIZE];
 unsigned char frameTrigger;
-
 unsigned char rasterSplitMax = 5;
 unsigned char rasterSplitCount;
-//unsigned char rasterSplit[10]
-//unsigned char rasterSplit[] = {230, 135, 100, 65 };
 
-unsigned char sprite0_y[] = { 190, 155, 120, 75, 40};
-unsigned int sprite0_x[] =  { 60, 260, 320, 0, 75};
-unsigned char sprite1_y[] = { 190, 155, 120, 75, 40};
-unsigned int sprite1_x[] =  { 200, 50, 80, 140, 75};
-
-#define MAX_SPRITE 32
-unsigned int s_x[] =  { 60, 260, 320, 0, 75, 200, 50, 80, 140, 75, 66, 88, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512};
-unsigned char s_y[] = { 190, 155, 120, 75, 40, 195, 150, 125, 80, 43, 70, 80, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+unsigned int s_x[MAX_SPRITE] =  { 60, 260, 320, 83, 70, 200, 50, 80, 140, 75, 66, 88, 270, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512, 512};
+unsigned char s_y[MAX_SPRITE] = { 190, 155, 120, 75, 40, 195, 150, 125, 80, 43, 70, 80, 88, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+unsigned char s_dx[MAX_SPRITE];
+unsigned char s_dy[MAX_SPRITE];
 unsigned char s_color[MAX_SPRITE];
 unsigned char s_frame[MAX_SPRITE];
 unsigned char s_index[MAX_SPRITE];
 
-//xyxyxyxyxyxyxyxyHccccccccFR*****
-unsigned char s_reg[10];
+// Data to be loaded into registers
+unsigned char s_splitcurr = 0;
+unsigned char s_splitmax = 2;
+unsigned char s0_x_reg[MAX_SPLITS] = { 0x50, 0xa0};
+unsigned char s0_y_reg[MAX_SPLITS] = { 0x60, 0x95};
+unsigned char s0_color_reg[MAX_SPLITS] = { 0x01, 0x02};
+unsigned char s0_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s1_x_reg[MAX_SPLITS] = { 0x60, 0x80};
+unsigned char s1_y_reg[MAX_SPLITS] = { 0x60, 0x90};
+unsigned char s1_color_reg[MAX_SPLITS] = { 0x03, 0x04};
+unsigned char s1_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s2_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s2_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s2_color_reg[MAX_SPLITS] = { 0x05, 0x06};
+unsigned char s2_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s3_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s3_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s3_color_reg[MAX_SPLITS] = { 0x07, 0x08};
+unsigned char s3_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s4_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s4_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s4_color_reg[MAX_SPLITS] = { 0x09, 0x0a};
+unsigned char s4_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s5_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s5_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s5_color_reg[MAX_SPLITS] = { 0x0b, 0x0c};
+unsigned char s5_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s6_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s6_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s6_color_reg[MAX_SPLITS] = { 0x0d, 0x0e};
+unsigned char s6_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s7_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s7_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char s7_color_reg[MAX_SPLITS] = { 0x0f, 0x01};
+unsigned char s7_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char s_hix_reg[MAX_SPLITS] = { 0x00, 0x00};
+unsigned char s_next_interrupt[MAX_SPLITS] = { 0x7f, 0xff, 0x00, 0x0B};
+unsigned char s_filler1[MAX_SPLITS];
+unsigned char s_filler2[MAX_SPLITS];
+unsigned char s_filler3[MAX_SPLITS];
+unsigned char s_filler4[MAX_SPLITS];
+unsigned char s_filler5[MAX_SPLITS];
 
-unsigned char s_x_reg[8];
-unsigned char s_y_reg[8];
-unsigned char s_color_reg[8];
-unsigned char s_hix_reg;
-unsigned char s_next_interrupt;
-
-void __fastcall__ sort(void)
-{
-    static unsigned char sprite1;
-    static unsigned char sprite2;    
-    static unsigned char tmp;
-    static unsigned char tmp2;
-
-    __asm__("LDA #$00");
-    __asm__("STA %v", sprite1);    
-    while (1)
-    {   
-        // ************************************        
-        // *** tmp = s_index[sprite1]     
-        // *** tmp2 = s_index[sprite1 + 1] 
-        // ************************************        
-        //__asm__("LDX %v", sprite1);                
-        //__asm__("LDA %v, X", s_index);
-        //__asm__("STA %v", tmp);
-        //__asm__("INX");
-        //__asm__("LDA %v, X", s_index);
-        //__asm__("STA %v", tmp2);
-
-        // ************************************        
-        // *** is s_y[tmp2] < s_y[tmp]        
-        // ************************************        
-        //__asm__("LDX %v", tmp2);        
-        //__asm__("LDA %v, X", s_y);
-        //__asm__("LDX %v", tmp);
-        //__asm__("CMP %v, X", s_y);
-        // BCC L1
-        // JMP L2
-        // L1:        
-        if (s_y[s_index[sprite1 + 1]] < s_y[s_index[sprite1]])
-        {            
-            __asm__("LDA %v", sprite1);
-            __asm__("STA %v", sprite2);
-            while(1)
-            {                
-                __asm__("LDX %v", sprite2);                
-                __asm__("LDA %v, X", s_index);
-                __asm__("STA %v", tmp);
-                __asm__("INX");
-                __asm__("LDA %v, X", s_index);
-                __asm__("DEX");
-                __asm__("STA %v, X", s_index);
-                __asm__("LDA %v", tmp);
-                __asm__("INX");
-                __asm__("STA %v, X", s_index);
-                if (sprite2 == 0) break;                
-                __asm__("DEC %v", sprite2);   
-                if (s_y[s_index[sprite2 + 1]] >= s_y[s_index[sprite2]]) break;
-            }
-        }        
-        __asm__("INC %v", sprite1);   
-        if (sprite1 == MAX_SPRITE - 1) break;
-    }
-}
-
-unsigned char interrupt(void)
-{       
-    --rasterSplitCount;
-
-    VIC.spr0_x = sprite0_x[rasterSplitCount] & 0xff;
-    VIC.spr1_x = sprite1_x[rasterSplitCount] & 0xff;
-
-    if (sprite0_x[rasterSplitCount] > 255)
-    {
-        VIC.spr_hi_x = VIC.spr_hi_x | 0x01;
-    }
-    else
-    {
-        VIC.spr_hi_x = VIC.spr_hi_x & 0xfe;
-    }
-
-    if (sprite1_x[rasterSplitCount] > 255)
-    {
-        VIC.spr_hi_x = VIC.spr_hi_x | 0x02;
-    }
-    else
-    {
-        VIC.spr_hi_x = VIC.spr_hi_x & 0xfd;
-    }        
-
-    VIC.spr0_y = sprite0_y[rasterSplitCount];
-    VIC.spr1_y = sprite1_y[rasterSplitCount];    
-
-    // Setup next line        
-    VIC.rasterline = sprite0_y[rasterSplitCount] + 15;                               
-    VIC.bordercolor = rasterSplitCount + 1; 
-    VIC.spr0_color =  rasterSplitCount + 1; 
-    VIC.spr1_color =  rasterSplitCount + 1; 
-
-    // We're at the bottom of the page, do game logic
-    if (rasterSplitCount == 0)
-    {        
-        // Tell main thread we drew a frame
-        frameTrigger=1;
-
-        // reset the list
-        rasterSplitCount = rasterSplitMax;        
-    }    
-                    
-    // Acknowlege the interrrupt 
-    VIC.irr = 1;    
-
-    return IRQ_HANDLED;                         
-}
+unsigned char _s_splitcurr = 0;
+unsigned char _s_splitmax = 2;
+unsigned char _s0_x_reg[MAX_SPLITS] = { 0x50, 0xa0};
+unsigned char _s0_y_reg[MAX_SPLITS] = { 0x60, 0x95};
+unsigned char _s0_color_reg[MAX_SPLITS] = { 0x01, 0x02};
+unsigned char _s0_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s1_x_reg[MAX_SPLITS] = { 0x60, 0x80};
+unsigned char _s1_y_reg[MAX_SPLITS] = { 0x60, 0x90};
+unsigned char _s1_color_reg[MAX_SPLITS] = { 0x03, 0x04};
+unsigned char _s1_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s2_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s2_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s2_color_reg[MAX_SPLITS] = { 0x05, 0x06};
+unsigned char _s2_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s3_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s3_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s3_color_reg[MAX_SPLITS] = { 0x07, 0x08};
+unsigned char _s3_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s4_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s4_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s4_color_reg[MAX_SPLITS] = { 0x09, 0x0a};
+unsigned char _s4_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s5_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s5_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s5_color_reg[MAX_SPLITS] = { 0x0b, 0x0c};
+unsigned char _s5_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s6_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s6_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s6_color_reg[MAX_SPLITS] = { 0x0d, 0x0e};
+unsigned char _s6_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s7_x_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s7_y_reg[MAX_SPLITS] = { 0xff, 0xff};
+unsigned char _s7_color_reg[MAX_SPLITS] = { 0x0f, 0x01};
+unsigned char _s7_frame[MAX_SPLITS] = { 0x80, 0x81};
+unsigned char _s_hix_reg[MAX_SPLITS] = { 0x00, 0x00};
+unsigned char _s_next_interrupt[MAX_SPLITS] = { 0x7f, 0xff, 0x00, 0x0B};
+unsigned char _s_filler1[MAX_SPLITS];
+unsigned char _s_filler2[MAX_SPLITS];
+unsigned char _s_filler3[MAX_SPLITS];
+unsigned char _s_filler4[MAX_SPLITS];
+unsigned char _s_filler5[MAX_SPLITS];
 
 // Setup the interrupt handler
 void initInterrupt (void)
@@ -164,10 +126,11 @@ void initInterrupt (void)
     CIA1.icr = 0x7F;                                // Turn of CIA timer
     VIC.ctrl1 = (VIC.ctrl1 & 0x7F);                 // Clear MSB of raster
     dummy = CIA1.icr;                               // Acknowlege any outstaiding interrupts from CIA1
-    dummy = CIA2.icr;                               // Acknowlege any outstaiding interrupts from CIA1        
-    rasterSplitCount = rasterSplitMax;
-    VIC.rasterline = 230;                           // Set raster line
-    set_irq(&interrupt, stackSize, STACK_SIZE);     // Set the interrupt handler
+    dummy = CIA2.icr;                               // Acknowlege any outstaiding interrupts from CIA1                
+    __asm__("LDA #<%v", interrupt2);
+    __asm__("STA $0314");
+    __asm__("LDA #>%v", interrupt2);
+    __asm__("STA $0315");    
     VIC.imr = 0x01;                                 // Enable the VIC raster interrupt    
     CLI();    
 }
@@ -183,6 +146,9 @@ void initVic(void)
     // Black background
     VIC.bgcolor0 = COLOR_BLACK;
     VIC.bordercolor = COLOR_BLACK;
+
+    // Enable all sprites
+    VIC.spr_ena = 0xff;
   
     // Change VIC banks
     CIA2.pra = 0x01;  
@@ -191,24 +157,32 @@ void initVic(void)
     VIC.addr = 0xec;
 }
 
-int main (void)
-{   
-    static unsigned int x;    
+void initSprites()
+{
     static unsigned char i;
 
     for(i = 0; i < MAX_SPRITE; i++)
     {
         s_index[i] = i;
         s_color[i] = i + 1;
-        s_frame[i] = 0x80;
+        s_frame[i] = 0x80;        
     }
-    sort();   
+}
+
+void debugSprites()
+{
+    static unsigned char i;
     for(i = 0; i < 15; i++)
     {
         printf("%u %u %u %u\r\n", i, s_index[i], s_y[s_index[i]], s_y[s_index[i]] + 21);
     }
-    while(1){}
-    
+    getchar();
+}
+
+void clearTileAndSprite()
+{
+    static unsigned int x; 
+
     for (x = 0; x < 2048; x ++)
     {
         tileData[x] = 0;
@@ -218,41 +192,200 @@ int main (void)
     {
         spriteData[x] = 0xaa;        
     }
+}
 
-    spriteSlot[0] = 0x80;
-    spriteSlot[1] = 0x81;
-    
-    initVic();
-    initInterrupt();  
 
-    VIC.spr_ena = 0x03;
-    VIC.spr0_x = 70;
-    VIC.spr1_x = 140;
-    VIC.spr0_color = COLOR_WHITE;
-    VIC.spr1_color = COLOR_WHITE;
-   
-    while(1) {
-        if (frameTrigger)
+void loadFrames()
+{
+    static signed char i;        
+    static unsigned char splitcurr = 0;
+    static unsigned char splitmax = 0;
+    static unsigned char spritecurr = 0;
+
+    for (i = 0; i < MAX_SPRITE; i++)
+    {
+        
+        // If this sprite is too close to 
+        if (i - 8 >= 0)
         {
-            for(i =0; i < rasterSplitMax; i++)
-            {
-                if ((i & 0x01) == 0x00)
+            if (s_y[s_index[i]] - s_y[s_index[i-8]] < 24) continue;
+        }        
+
+        switch (spritecurr)
+        {
+            
+            case 0:
+                _s0_y_reg[splitcurr] = s_y[s_index[i]];
+                _s0_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
                 {
-                    sprite0_x[i] --;
-                    sprite1_x[i] ++;                
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x01;
                 }
                 else
                 {
-                    sprite0_x[i] ++;
-                    sprite1_x[i] --;                
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xfe;
+                }
+                _s0_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s0_frame[splitcurr] = s_frame[s_index[i]];                
+                break;
+            case 1:
+                _s1_y_reg[splitcurr] = s_y[s_index[i]];
+                _s1_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x02;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xfd;
+                }
+                _s1_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s1_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 2:
+                _s2_y_reg[splitcurr] = s_y[s_index[i]];
+                _s2_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x04;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xfb;
+                }
+                _s2_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s2_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 3:
+                _s3_y_reg[splitcurr] = s_y[s_index[i]];
+                _s3_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x08;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xf7;
+                }
+                _s3_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s3_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 4:
+                _s4_y_reg[splitcurr] = s_y[s_index[i]];
+                _s4_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x10;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xef;
+                }
+                _s4_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s4_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 5:
+                _s5_y_reg[splitcurr] = s_y[s_index[i]];
+                _s5_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x20;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xdf;
+                }
+                _s5_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s5_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 6:
+                _s6_y_reg[splitcurr] = s_y[s_index[i]];
+                _s6_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x40;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0xbf;
+                }
+                _s6_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s6_frame[splitcurr] = s_frame[s_index[i]];
+                break;
+            case 7:
+                _s7_y_reg[splitcurr] = s_y[s_index[i]];
+                _s7_x_reg[splitcurr] = s_x[s_index[i]] & 0xff;
+                if (s_x[s_index[i]] > 0xff)
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] | 0x80;
+                }
+                else
+                {
+                    _s_hix_reg[splitcurr] = _s_hix_reg[splitcurr] & 0x7f;
+                }
+                _s7_color_reg[splitcurr] = s_color[s_index[i]];                
+                _s7_frame[splitcurr] = s_frame[s_index[i]];
+                break;                
+        }
+        
+        // if sprite isn't in use, don't mess with the raster
+        if (s_x[s_index[i]] == 0x1ff) continue;
+        
+        if (splitcurr != 0)
+        {
+            _s_next_interrupt[splitcurr - 1] = _s0_y_reg[splitcurr] - 16;
+        }        
+
+        if (++spritecurr > 7)
+        {
+            // kill the loop if there are no more lve sprites
+            if (s_x[s_index[i]] == 0x1ff) break;
+
+            // Reset the loop and start a new split
+            spritecurr = 0;
+            ++splitcurr;
+            ++splitmax;
+        }        
+    }
+
+    // Last line is always 0xff
+    _s_next_interrupt[s_splitmax] = 0xff;
+    _s_splitcurr = splitcurr;
+    _s_splitmax = splitmax;
+}
+
+int main (void)
+{          
+    static unsigned char i;
+    
+    initSprites();    
+    sort();   
+    loadFrames();
+    //debugSprites();
+    clearTileAndSprite();        
+    initVic();
+    initInterrupt();  
+    
+    while(1) {
+        if (frameTrigger)
+        {   
+            /*         
+            for(i =0; i < 5; i++)
+            {
+                if (i & 1 == 1)
+                {
+                    s_x[i]--;
+                    s_y[i]++;
+                }
+                else
+                {
+                    s_x[i]++;
+                    s_y[i]--;
                 }                
-                //++sprite0_y[i];
-                //++sprite1_y[i];
-                if (sprite0_x[i] == 350) sprite0_x[i] = 1;
-                if (sprite1_x[i] == 350) sprite1_x[i] = 1;
-                if (sprite0_x[i] == 0) sprite0_x[i] = 349;
-                if (sprite1_x[i] == 0) sprite1_x[i] = 349;
-            }
+            } 
+            */           
+            sort();            
+            loadFrames();            
             frameTrigger = 0;
         }
     }
