@@ -1,2 +1,0 @@
-extern void sort(void);
-

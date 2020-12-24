@@ -1,162 +1,112 @@
 Modules list:
 -------------
 asteroids.o:
-    CODE              Offs=000000  Size=000999  Align=00001  Fill=0000
-    RODATA            Offs=000000  Size=00000E  Align=00001  Fill=0000
-    BSS               Offs=000000  Size=0000D4  Align=00001  Fill=0000
-    DATA              Offs=000000  Size=000178  Align=00001  Fill=0000
+    CODE              Offs=000000  Size=0002B2  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=0000C6  Align=00001  Fill=0000
 graphlib.o:
-    CODE              Offs=000999  Size=0003D3  Align=00001  Fill=0000
-    RODATA            Offs=00000E  Size=000003  Align=00001  Fill=0000
-    BSS               Offs=0000D4  Size=00001C  Align=00001  Fill=0000
-    DATA              Offs=000178  Size=000271  Align=00001  Fill=0000
-interrupt.o:
-    CODE              Offs=000D6C  Size=0001F4  Align=00001  Fill=0000
-sort.o:
-    CODE              Offs=000F60  Size=00003A  Align=00001  Fill=0000
+    CODE              Offs=0002B2  Size=0003D3  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000003  Align=00001  Fill=0000
+    BSS               Offs=0000C6  Size=00001C  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000271  Align=00001  Fill=0000
+multi.o:
+    CODE              Offs=000685  Size=000301  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_directerrno.o):
-    CODE              Offs=000F9A  Size=00000A  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(_file.o):
-    DATA              Offs=0003E9  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=000986  Size=00000A  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_hextab.o):
-    RODATA            Offs=000011  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=000003  Size=000010  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_longminstr.o):
-    RODATA            Offs=000021  Size=00000C  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(_mappederrno.o):
-    CODE              Offs=000FA4  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=000013  Size=00000C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_oserror.o):
-    BSS               Offs=0000F0  Size=000001  Align=00001  Fill=0000
+    BSS               Offs=0000E2  Size=000001  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_printf.o):
-    CODE              Offs=000FB4  Size=0003A5  Align=00001  Fill=0000
-    BSS               Offs=0000F1  Size=00002B  Align=00001  Fill=0000
-    DATA              Offs=000407  Size=000003  Align=00001  Fill=0000
+    CODE              Offs=000990  Size=0003A5  Align=00001  Fill=0000
+    BSS               Offs=0000E3  Size=00002B  Align=00001  Fill=0000
+    DATA              Offs=000271  Size=000003  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_seterrno.o):
-    CODE              Offs=001359  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=000D35  Size=000009  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(addysp.o):
-    CODE              Offs=001362  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=000D3E  Size=00000E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(and.o):
-    CODE              Offs=001370  Size=000010  Align=00001  Fill=0000
+    CODE              Offs=000D4C  Size=000010  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(axlong.o):
-    CODE              Offs=001380  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000D5C  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(callmain.o):
-    CODE              Offs=00138D  Size=000017  Align=00001  Fill=0000
-    DATA              Offs=00040A  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=000D69  Size=000017  Align=00001  Fill=0000
+    DATA              Offs=000274  Size=000004  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(condes.o):
-    CODE              Offs=0013A4  Size=00000C  Align=00001  Fill=0000
-    DATA              Offs=00040E  Size=000025  Align=00001  Fill=0000
+    CODE              Offs=000D80  Size=00000C  Align=00001  Fill=0000
+    DATA              Offs=000278  Size=000025  Align=00001  Fill=0000
     ONCE              Offs=000000  Size=00000C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(crt0.o):
     STARTUP           Offs=000000  Size=000033  Align=00001  Fill=0000
     ONCE              Offs=00000C  Size=00001A  Align=00001  Fill=0000
     INIT              Offs=000000  Size=00001C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ctype.o):
-    RODATA            Offs=00002D  Size=00008B  Align=00001  Fill=0000
+    RODATA            Offs=00001F  Size=00008B  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ctypemask.o):
-    CODE              Offs=0013B0  Size=00001E  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp1.o):
-    CODE              Offs=0013CE  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=000D8C  Size=00001E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp3.o):
-    CODE              Offs=0013D7  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000DAA  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp4.o):
-    CODE              Offs=0013E4  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000DB7  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp6.o):
-    CODE              Offs=0013F1  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000DC4  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(errno.o):
-    BSS               Offs=00011C  Size=000002  Align=00001  Fill=0000
+    BSS               Offs=00010E  Size=000002  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(exehdr.o):
     EXEHDR            Offs=000000  Size=00000C  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(fgetc.o):
-    CODE              Offs=0013FE  Size=00008A  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(filedes.o):
-    CODE              Offs=001488  Size=00000E  Align=00001  Fill=0000
-    DATA              Offs=000433  Size=000010  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(fwrite.o):
-    CODE              Offs=001496  Size=00007B  Align=00001  Fill=0000
-    BSS               Offs=00011E  Size=000002  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(getchar.o):
-    CODE              Offs=001511  Size=000009  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp2.o):
-    CODE              Offs=00151A  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=000DD1  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp3.o):
-    CODE              Offs=001530  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000DE7  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp4.o):
-    CODE              Offs=001535  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000DEC  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp5.o):
-    CODE              Offs=00153A  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000DF1  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp6.o):
-    CODE              Offs=00153F  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000DF6  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(kernal.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ldaxsp.o):
-    CODE              Offs=001544  Size=000009  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(leaaxsp.o):
-    CODE              Offs=00154D  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=000DFB  Size=000009  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(lneg.o):
-    CODE              Offs=001559  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=000E04  Size=00001E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(loadaddr.o):
     LOADADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(lpush.o):
-    CODE              Offs=001577  Size=000021  Align=00001  Fill=0000
+    CODE              Offs=000E22  Size=000021  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ltoa.o):
-    CODE              Offs=001598  Size=000095  Align=00001  Fill=0000
+    CODE              Offs=000E43  Size=000095  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(makebool.o):
-    CODE              Offs=00162D  Size=00002C  Align=00001  Fill=0000
+    CODE              Offs=000ED8  Size=00002C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(memcpy.o):
-    CODE              Offs=001659  Size=00003C  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(mul.o):
-    CODE              Offs=001695  Size=000045  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(mul8.o):
-    CODE              Offs=0016DA  Size=00003A  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(oserror.o):
-    CODE              Offs=001714  Size=000016  Align=00001  Fill=0000
-    RODATA            Offs=0000B8  Size=00005A  Align=00001  Fill=0000
+    CODE              Offs=000F04  Size=00003C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(popptr1.o):
-    CODE              Offs=00172A  Size=00000E  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(printf.o):
-    CODE              Offs=001738  Size=000033  Align=00001  Fill=0000
-    BSS               Offs=000120  Size=000001  Align=00001  Fill=0000
+    CODE              Offs=000F40  Size=00000E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(push1.o):
-    CODE              Offs=00176B  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000F4E  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pusha.o):
-    CODE              Offs=001770  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=000F53  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pushax.o):
-    CODE              Offs=001786  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=000F69  Size=00001A  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pushwsp.o):
-    CODE              Offs=0017A0  Size=00001C  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(read.o):
-    CODE              Offs=0017BC  Size=00007E  Align=00001  Fill=0000
-    BSS               Offs=000121  Size=000001  Align=00001  Fill=0000
-    ONCE              Offs=000026  Size=00000C  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(regswap2.o):
-    CODE              Offs=00183A  Size=000016  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(rwcommon.o):
-    CODE              Offs=001850  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=000F83  Size=00001C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(sprintf.o):
-    CODE              Offs=00186C  Size=00002B  Align=00001  Fill=0000
-    BSS               Offs=000122  Size=000001  Align=00001  Fill=0000
+    CODE              Offs=000F9F  Size=00002B  Align=00001  Fill=0000
+    BSS               Offs=000110  Size=000001  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(status.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(staxsp.o):
-    CODE              Offs=001897  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=000FCA  Size=00000B  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(strlen.o):
-    CODE              Offs=0018A2  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=000FD5  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(strlower.o):
-    CODE              Offs=0018B8  Size=000027  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(sub.o):
-    CODE              Offs=0018DF  Size=000015  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(udiv.o):
-    CODE              Offs=0018F4  Size=00004F  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(vfprintf.o):
-    CODE              Offs=001943  Size=000061  Align=00001  Fill=0000
-    DATA              Offs=000443  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=000FEB  Size=000027  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(vsnprintf.o):
-    CODE              Offs=0019A4  Size=0000DA  Align=00001  Fill=0000
-    DATA              Offs=00044B  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=001012  Size=0000DA  Align=00001  Fill=0000
+    DATA              Offs=00029D  Size=000008  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(vsprintf.o):
-    CODE              Offs=001A7E  Size=000012  Align=00001  Fill=0000
-C:\C64\cc65-snapshot-win32\lib/c64.lib(write.o):
-    CODE              Offs=001A90  Size=000054  Align=00001  Fill=0000
-    ONCE              Offs=000032  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=0010EC  Size=000012  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(zerobss.o):
-    CODE              Offs=001AE4  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=0010FE  Size=000023  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(zeropage.o):
     ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
 
@@ -169,234 +119,110 @@ ZEROPAGE              000002  00001B  00001A  00001
 LOADADDR              0007FF  000800  000002  00001
 EXEHDR                000801  00080C  00000C  00001
 STARTUP               00080D  00083F  000033  00001
-CODE                  000840  002346  001B07  00001
-RODATA                002347  002458  000112  00001
-DATA                  002459  0028AB  000453  00001
-INIT                  0028AC  0028C7  00001C  00001
-BSS                   0028C8  0029EA  000123  00001
-ONCE                  0028C8  00290E  000047  00001
+CODE                  000840  001960  001121  00001
+RODATA                001961  001A0A  0000AA  00001
+DATA                  001A0B  001CAF  0002A5  00001
+INIT                  001CB0  001CCB  00001C  00001
+BSS                   001CCC  001DDC  000111  00001
+ONCE                  001CCC  001CF1  000026  00001
 
 
 Exports list by name:
 ---------------------
-BASIN                     00FFCF RLA    BSOUT                     00FFD2 RLA    
-CHKIN                     00FFC6 RLA    CKOUT                     00FFC9 RLA    
-CLRCH                     00FFCC RLA    OPEN                      00FFC0 RLA    
-READST                    00FFB7 RLA    SETLFS                    00FFBA RLA    
-ST                        000090 RLZ    __BSS_RUN__               0028C8 RLA    
-__BSS_SIZE__              000123 REA    __CONSTRUCTOR_COUNT__     000002 REA    
-__CONSTRUCTOR_TABLE__     00290B RLA    __DESTRUCTOR_COUNT__      000000 REA    
-__DESTRUCTOR_TABLE__      002459 RLA    __EXEHDR__                000001 REA    
-__HEADER_LAST__           00080D RLA    __HIMEM__                 00D000 REA    
-__LOADADDR__              000001 REA    __MAIN_SIZE__             00C7F3 REA    
-__MAIN_START__            00080D RLA    __ONCE_RUN__              0028C8 RLA    
-__STACKSIZE__             000800 REA    __STARTUP__               000001 REA    
-__ctype                   002374 RLA    __ctypeidx                00237F RLA    
-__directerrno             0017DA RLA    __errno                   0029E4 RLA    
-__hextab                  002358 RLA    __longminstr              002368 RLA    
-__mappederrno             0017E4 RLA    __oserror                 0029B8 RLA    
-__osmaperrno              001F54 RLA    __printf                  0018E7 RLA    
-__s0_color_reg            00254E RLA    __s0_frame                002552 RLA    
-__s0_x_reg                002546 RLA    __s0_y_reg                00254A RLA    
-__s1_color_reg            00255E RLA    __s1_frame                002562 RLA    
-__s1_x_reg                002556 RLA    __s1_y_reg                00255A RLA    
-__s2_color_reg            00256E RLA    __s2_frame                002572 RLA    
-__s2_x_reg                002566 RLA    __s2_y_reg                00256A RLA    
-__s3_color_reg            00257E RLA    __s3_frame                002582 RLA    
-__s3_x_reg                002576 RLA    __s3_y_reg                00257A RLA    
-__s4_color_reg            00258E RLA    __s4_frame                002592 RLA    
-__s4_x_reg                002586 RLA    __s4_y_reg                00258A RLA    
-__s5_color_reg            00259E RLA    __s5_frame                0025A2 RLA    
-__s5_x_reg                002596 RLA    __s5_y_reg                00259A RLA    
-__s6_color_reg            0025AE RLA    __s6_frame                0025B2 RLA    
-__s6_x_reg                0025A6 RLA    __s6_y_reg                0025AA RLA    
-__s7_color_reg            0025BE RLA    __s7_frame                0025C2 RLA    
-__s7_x_reg                0025B6 RLA    __s7_y_reg                0025BA RLA    
-__s_hix_reg               0025C6 RLA    __s_next_interrupt        0025CA RLA    
-__s_splitcurr             002544 RLA    __s_splitmax              002545 RLA    
-__seterrno                001B99 RLA    _fgetc                    001C3E RLA    
-_frameTrigger             0028C8 RLA    _fwrite                   001CD6 RLA    
-_getchar                  001D51 RLA    _interrupt2               0015AC RLA    
-_ltoa                     001DF0 RLA    _main                     0011B4 RLA    
-_memcpy                   001E99 RLA    _printf                   001F78 RLA    
-_read                     001FFC RLA    _s0_color_reg             0024C4 RLA    
-_s0_frame                 0024C8 RLA    _s0_x_reg                 0024BC RLA    
-_s0_y_reg                 0024C0 RLA    _s1_color_reg             0024D4 RLA    
-_s1_frame                 0024D8 RLA    _s1_x_reg                 0024CC RLA    
-_s1_y_reg                 0024D0 RLA    _s2_color_reg             0024E4 RLA    
-_s2_frame                 0024E8 RLA    _s2_x_reg                 0024DC RLA    
-_s2_y_reg                 0024E0 RLA    _s3_color_reg             0024F4 RLA    
-_s3_frame                 0024F8 RLA    _s3_x_reg                 0024EC RLA    
-_s3_y_reg                 0024F0 RLA    _s4_color_reg             002504 RLA    
-_s4_frame                 002508 RLA    _s4_x_reg                 0024FC RLA    
-_s4_y_reg                 002500 RLA    _s5_color_reg             002514 RLA    
-_s5_frame                 002518 RLA    _s5_x_reg                 00250C RLA    
-_s5_y_reg                 002510 RLA    _s6_color_reg             002524 RLA    
-_s6_frame                 002528 RLA    _s6_x_reg                 00251C RLA    
-_s6_y_reg                 002520 RLA    _s7_color_reg             002534 RLA    
-_s7_frame                 002538 RLA    _s7_x_reg                 00252C RLA    
-_s7_y_reg                 002530 RLA    _s_hix_reg                00253C RLA    
-_s_index                  00294A RLA    _s_next_interrupt         002540 RLA    
-_s_splitcurr              0024BA RLA    _s_splitmax               0024BB RLA    
-_s_y                      00249A RLA    _sort                     0017A0 RLA    
-_sprintf                  0020AC RLA    _spriteData               0025D7 RLA    
-_stdin                    00285A RLA    _stdout                   00285C RLA    
-_strlen                   0020E2 RLA    _strlower                 0020F8 RLA    
-_tileData                 0025D3 RLA    _ultoa                    001E31 RLA    
-_vfprintf                 0021BB RLA    _vsprintf                 0022BE RLA    
-_write                    0022D0 RLA    addysp                    001BA3 RLA    
-addysp1                   001BA2 RLA    axlong                    001BC0 RLA    
-axulong                   001BC6 RLA    boolult                   001E8C RLA    
-callmain                  001BCD RLA    ctypemaskdirect           001BF4 RLA    
-decsp1                    001C0E RLA    decsp3                    001C17 RLA    
-decsp4                    001C24 RLA    decsp6                    001C31 RLA    
-donelib                   001BE4 RLA    fdtab                     00288C RLA    
-incsp2                    001D62 RLA    incsp3                    001D70 RLA    
-incsp4                    001D75 RLA    incsp5                    001D7A RLA    
-incsp6                    001D7F RLA    initlib                   0028C8 RLA    
-initstdin                 0028EE  LAI   initstdout                0028FA  LAI   
-ldaxysp                   001D86 RLA    leaa0sp                   001D8D RLA    
-mul8x16                   001F1C RLA    mul8x16a                  001F26 RLA    
-negeax                    001D99 RLA    popax                     001D5A RLA    
-popptr1                   001F6A RLA    ptr1                      00000A RLZ    
-ptr2                      00000C RLZ    ptr3                      00000E RLZ    
-ptr4                      000010 RLZ    push1                     001FAB RLA    
-pusha                     001FB4 RLA    pusha0                    001FC8 RLA    
-pushax                    001FCA RLA    pusheax                   001DC0 RLA    
-pushw0sp                  001FE0 RLA    pushwysp                  001FE2 RLA    
-regbank                   000016 RLZ    regswap2                  00207A RLA    
-rwcommon                  002090 RLA    sp                        000002 RLZ    
-sreg                      000004 RLZ    staxysp                   0020D9 RLA    
-tmp1                      000012 RLZ    tmp2                      000013 RLZ    
-tmp3                      000014 RLZ    tosanda0                  001BB0 RLA    
-tossuba0                  00211F RLA    tosudivax                 002136 RLA    
-tosumulax                 001ED5 RLA    unittab                   002894 RLA    
-vsnprintf                 0021E7 RLA    zerobss                   002324 RLA    
-
+BSOUT                     00FFD2 RLA    ST                        000090 RLZ    
+__BSS_RUN__               001CCC RLA    __BSS_SIZE__              000111 REA    
+__CONSTRUCTOR_COUNT__     000000 REA    __CONSTRUCTOR_TABLE__     001CF2 RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      001A0B RLA    
+__EXEHDR__                000001 REA    __HEADER_LAST__           00080D RLA    
+__HIMEM__                 00D000 REA    __LOADADDR__              000001 REA    
+__MAIN_SIZE__             00C7F3 REA    __MAIN_START__            00080D RLA    
+__ONCE_RUN__              001CCC RLA    __STACKSIZE__             000800 REA    
+__STARTUP__               000001 REA    __ctype                   001980 RLA    
+__ctypeidx                00198B RLA    __directerrno             0011C6 RLA    
+__errno                   001DDA RLA    __hextab                  001964 RLA    
+__longminstr              001974 RLA    __oserror                 001DAE RLA    
+__printf                  0012C3 RLA    __seterrno                001575 RLA    
+_frameflag                00112C RLA    _initraster               000EC5 RLA    
+_initsprites              000EE9 RLA    _ltoa                     00169B RLA    
+_main                     0008DB RLA    _memcpy                   001744 RLA    
+_numsprites               000002 REZ    _sprc                     00106B RLA    
+_sprf                     00108B RLA    _sprintf                  0017DF RLA    
+_spriteData               001A11 RLA    _sprupdateflag            000003 REZ    
+_sprx                     00102B RLA    _spry                     00104B RLA    
+_strlen                   001815 RLA    _strlower                 00182B RLA    
+_tileData                 001A0D RLA    _ultoa                    0016DC RLA    
+_vsprintf                 00192C RLA    addysp                    00157F RLA    
+addysp1                   00157E RLA    axlong                    00159C RLA    
+axulong                   0015A2 RLA    boolult                   001737 RLA    
+callmain                  0015A9 RLA    ctypemaskdirect           0015D0 RLA    
+decsp3                    0015EA RLA    decsp4                    0015F7 RLA    
+decsp6                    001604 RLA    donelib                   0015C0 RLA    
+incsp2                    001619 RLA    incsp3                    001627 RLA    
+incsp4                    00162C RLA    incsp5                    001631 RLA    
+incsp6                    001636 RLA    initlib                   001CCC RLA    
+ldaxysp                   00163D RLA    negeax                    001644 RLA    
+popax                     001611 RLA    popptr1                   001780 RLA    
+ptr1                      00000A RLZ    ptr2                      00000C RLZ    
+ptr3                      00000E RLZ    push1                     00178E RLA    
+pusha                     001797 RLA    pusha0                    0017AB RLA    
+pushax                    0017AD RLA    pusheax                   00166B RLA    
+pushw0sp                  0017C3 RLA    regbank                   000016 RLZ    
+sp                        000002 RLZ    sreg                      000004 RLZ    
+staxysp                   00180C RLA    tmp1                      000012 RLZ    
+tosanda0                  00158C RLA    vsnprintf                 001855 RLA    
+zerobss                   00193E RLA    
 
 
 Exports list by value:
 ----------------------
-__DESTRUCTOR_COUNT__      000000 REA    __EXEHDR__                000001 REA    
-__LOADADDR__              000001 REA    __STARTUP__               000001 REA    
-sp                        000002 RLZ    __CONSTRUCTOR_COUNT__     000002 REA    
+__DESTRUCTOR_COUNT__      000000 REA    __CONSTRUCTOR_COUNT__     000000 REA    
+__EXEHDR__                000001 REA    __STARTUP__               000001 REA    
+__LOADADDR__              000001 REA    _numsprites               000002 REZ    
+sp                        000002 RLZ    _sprupdateflag            000003 REZ    
 sreg                      000004 RLZ    ptr1                      00000A RLZ    
 ptr2                      00000C RLZ    ptr3                      00000E RLZ    
-ptr4                      000010 RLZ    tmp1                      000012 RLZ    
-tmp2                      000013 RLZ    tmp3                      000014 RLZ    
-regbank                   000016 RLZ    ST                        000090 RLZ    
-__BSS_SIZE__              000123 REA    __STACKSIZE__             000800 REA    
-__MAIN_START__            00080D RLA    __HEADER_LAST__           00080D RLA    
-_main                     0011B4 RLA    _interrupt2               0015AC RLA    
-_sort                     0017A0 RLA    __directerrno             0017DA RLA    
-__mappederrno             0017E4 RLA    __printf                  0018E7 RLA    
-__seterrno                001B99 RLA    addysp1                   001BA2 RLA    
-addysp                    001BA3 RLA    tosanda0                  001BB0 RLA    
-axlong                    001BC0 RLA    axulong                   001BC6 RLA    
-callmain                  001BCD RLA    donelib                   001BE4 RLA    
-ctypemaskdirect           001BF4 RLA    decsp1                    001C0E RLA    
-decsp3                    001C17 RLA    decsp4                    001C24 RLA    
-decsp6                    001C31 RLA    _fgetc                    001C3E RLA    
-_fwrite                   001CD6 RLA    _getchar                  001D51 RLA    
-popax                     001D5A RLA    incsp2                    001D62 RLA    
-incsp3                    001D70 RLA    incsp4                    001D75 RLA    
-incsp5                    001D7A RLA    incsp6                    001D7F RLA    
-ldaxysp                   001D86 RLA    leaa0sp                   001D8D RLA    
-negeax                    001D99 RLA    pusheax                   001DC0 RLA    
-_ltoa                     001DF0 RLA    _ultoa                    001E31 RLA    
-boolult                   001E8C RLA    _memcpy                   001E99 RLA    
-tosumulax                 001ED5 RLA    mul8x16                   001F1C RLA    
-mul8x16a                  001F26 RLA    __osmaperrno              001F54 RLA    
-popptr1                   001F6A RLA    _printf                   001F78 RLA    
-push1                     001FAB RLA    pusha                     001FB4 RLA    
-pusha0                    001FC8 RLA    pushax                    001FCA RLA    
-pushw0sp                  001FE0 RLA    pushwysp                  001FE2 RLA    
-_read                     001FFC RLA    regswap2                  00207A RLA    
-rwcommon                  002090 RLA    _sprintf                  0020AC RLA    
-staxysp                   0020D9 RLA    _strlen                   0020E2 RLA    
-_strlower                 0020F8 RLA    tossuba0                  00211F RLA    
-tosudivax                 002136 RLA    _vfprintf                 0021BB RLA    
-vsnprintf                 0021E7 RLA    _vsprintf                 0022BE RLA    
-_write                    0022D0 RLA    zerobss                   002324 RLA    
-__hextab                  002358 RLA    __longminstr              002368 RLA    
-__ctype                   002374 RLA    __ctypeidx                00237F RLA    
-__DESTRUCTOR_TABLE__      002459 RLA    _s_y                      00249A RLA    
-_s_splitcurr              0024BA RLA    _s_splitmax               0024BB RLA    
-_s0_x_reg                 0024BC RLA    _s0_y_reg                 0024C0 RLA    
-_s0_color_reg             0024C4 RLA    _s0_frame                 0024C8 RLA    
-_s1_x_reg                 0024CC RLA    _s1_y_reg                 0024D0 RLA    
-_s1_color_reg             0024D4 RLA    _s1_frame                 0024D8 RLA    
-_s2_x_reg                 0024DC RLA    _s2_y_reg                 0024E0 RLA    
-_s2_color_reg             0024E4 RLA    _s2_frame                 0024E8 RLA    
-_s3_x_reg                 0024EC RLA    _s3_y_reg                 0024F0 RLA    
-_s3_color_reg             0024F4 RLA    _s3_frame                 0024F8 RLA    
-_s4_x_reg                 0024FC RLA    _s4_y_reg                 002500 RLA    
-_s4_color_reg             002504 RLA    _s4_frame                 002508 RLA    
-_s5_x_reg                 00250C RLA    _s5_y_reg                 002510 RLA    
-_s5_color_reg             002514 RLA    _s5_frame                 002518 RLA    
-_s6_x_reg                 00251C RLA    _s6_y_reg                 002520 RLA    
-_s6_color_reg             002524 RLA    _s6_frame                 002528 RLA    
-_s7_x_reg                 00252C RLA    _s7_y_reg                 002530 RLA    
-_s7_color_reg             002534 RLA    _s7_frame                 002538 RLA    
-_s_hix_reg                00253C RLA    _s_next_interrupt         002540 RLA    
-__s_splitcurr             002544 RLA    __s_splitmax              002545 RLA    
-__s0_x_reg                002546 RLA    __s0_y_reg                00254A RLA    
-__s0_color_reg            00254E RLA    __s0_frame                002552 RLA    
-__s1_x_reg                002556 RLA    __s1_y_reg                00255A RLA    
-__s1_color_reg            00255E RLA    __s1_frame                002562 RLA    
-__s2_x_reg                002566 RLA    __s2_y_reg                00256A RLA    
-__s2_color_reg            00256E RLA    __s2_frame                002572 RLA    
-__s3_x_reg                002576 RLA    __s3_y_reg                00257A RLA    
-__s3_color_reg            00257E RLA    __s3_frame                002582 RLA    
-__s4_x_reg                002586 RLA    __s4_y_reg                00258A RLA    
-__s4_color_reg            00258E RLA    __s4_frame                002592 RLA    
-__s5_x_reg                002596 RLA    __s5_y_reg                00259A RLA    
-__s5_color_reg            00259E RLA    __s5_frame                0025A2 RLA    
-__s6_x_reg                0025A6 RLA    __s6_y_reg                0025AA RLA    
-__s6_color_reg            0025AE RLA    __s6_frame                0025B2 RLA    
-__s7_x_reg                0025B6 RLA    __s7_y_reg                0025BA RLA    
-__s7_color_reg            0025BE RLA    __s7_frame                0025C2 RLA    
-__s_hix_reg               0025C6 RLA    __s_next_interrupt        0025CA RLA    
-_tileData                 0025D3 RLA    _spriteData               0025D7 RLA    
-_stdin                    00285A RLA    _stdout                   00285C RLA    
-fdtab                     00288C RLA    unittab                   002894 RLA    
-_frameTrigger             0028C8 RLA    __BSS_RUN__               0028C8 RLA    
-initlib                   0028C8 RLA    __ONCE_RUN__              0028C8 RLA    
-initstdin                 0028EE  LAI   initstdout                0028FA  LAI   
-__CONSTRUCTOR_TABLE__     00290B RLA    _s_index                  00294A RLA    
-__oserror                 0029B8 RLA    __errno                   0029E4 RLA    
+tmp1                      000012 RLZ    regbank                   000016 RLZ    
+ST                        000090 RLZ    __BSS_SIZE__              000111 REA    
+__STACKSIZE__             000800 REA    __HEADER_LAST__           00080D RLA    
+__MAIN_START__            00080D RLA    _main                     0008DB RLA    
+_initraster               000EC5 RLA    _initsprites              000EE9 RLA    
+_sprx                     00102B RLA    _spry                     00104B RLA    
+_sprc                     00106B RLA    _sprf                     00108B RLA    
+_frameflag                00112C RLA    __directerrno             0011C6 RLA    
+__printf                  0012C3 RLA    __seterrno                001575 RLA    
+addysp1                   00157E RLA    addysp                    00157F RLA    
+tosanda0                  00158C RLA    axlong                    00159C RLA    
+axulong                   0015A2 RLA    callmain                  0015A9 RLA    
+donelib                   0015C0 RLA    ctypemaskdirect           0015D0 RLA    
+decsp3                    0015EA RLA    decsp4                    0015F7 RLA    
+decsp6                    001604 RLA    popax                     001611 RLA    
+incsp2                    001619 RLA    incsp3                    001627 RLA    
+incsp4                    00162C RLA    incsp5                    001631 RLA    
+incsp6                    001636 RLA    ldaxysp                   00163D RLA    
+negeax                    001644 RLA    pusheax                   00166B RLA    
+_ltoa                     00169B RLA    _ultoa                    0016DC RLA    
+boolult                   001737 RLA    _memcpy                   001744 RLA    
+popptr1                   001780 RLA    push1                     00178E RLA    
+pusha                     001797 RLA    pusha0                    0017AB RLA    
+pushax                    0017AD RLA    pushw0sp                  0017C3 RLA    
+_sprintf                  0017DF RLA    staxysp                   00180C RLA    
+_strlen                   001815 RLA    _strlower                 00182B RLA    
+vsnprintf                 001855 RLA    _vsprintf                 00192C RLA    
+zerobss                   00193E RLA    __hextab                  001964 RLA    
+__longminstr              001974 RLA    __ctype                   001980 RLA    
+__ctypeidx                00198B RLA    __DESTRUCTOR_TABLE__      001A0B RLA    
+_tileData                 001A0D RLA    _spriteData               001A11 RLA    
+initlib                   001CCC RLA    __BSS_RUN__               001CCC RLA    
+__ONCE_RUN__              001CCC RLA    __CONSTRUCTOR_TABLE__     001CF2 RLA    
+__oserror                 001DAE RLA    __errno                   001DDA RLA    
 __MAIN_SIZE__             00C7F3 REA    __HIMEM__                 00D000 REA    
-READST                    00FFB7 RLA    SETLFS                    00FFBA RLA    
-OPEN                      00FFC0 RLA    CHKIN                     00FFC6 RLA    
-CKOUT                     00FFC9 RLA    CLRCH                     00FFCC RLA    
-BASIN                     00FFCF RLA    BSOUT                     00FFD2 RLA    
-
+BSOUT                     00FFD2 RLA    
 
 
 Imports list:
 -------------
-BASIN (kernal.o):
-    read.o                    cbm/cbm.inc(47)
 BSOUT (kernal.o):
-    write.o                   cbm/cbm.inc(49)
-    read.o                    cbm/cbm.inc(49)
     crt0.o                    c64/crt0.s(10)
-CHKIN (kernal.o):
-    read.o                    cbm/cbm.inc(44)
-CKOUT (kernal.o):
-    write.o                   cbm/cbm.inc(45)
-CLRCH (kernal.o):
-    write.o                   cbm/cbm.inc(46)
-    read.o                    cbm/cbm.inc(46)
-OPEN (kernal.o):
-    write.o                   cbm/cbm.inc(35)
-    read.o                    cbm/cbm.inc(35)
-READST (kernal.o):
-    write.o                   cbm/cbm.inc(32)
-    read.o                    cbm/cbm.inc(32)
-SETLFS (kernal.o):
-    write.o                   cbm/cbm.inc(33)
-    read.o                    cbm/cbm.inc(33)
 ST (status.o):
     crt0.o                    c64/crt0.s(13)
 __BSS_RUN__ ([linker generated]):
@@ -431,240 +257,70 @@ __ONCE_RUN__ ([linker generated]):
 __STACKSIZE__ ([linker generated]):
     [linker generated]        C:\C64\cc65-snapshot-win32\cfg/c64.cfg(15)
 __STARTUP__ (crt0.o):
-    asteroids.o               src/asteroids.s(33)
+    asteroids.o               src/asteroids.s(32)
 __ctype (ctype.o):
     ctypemask.o               common/ctypemask.s(23)
 __ctypeidx (ctype.o):
     ctypemask.o               common/ctypemask.s(24)
 __directerrno (_directerrno.o):
-    write.o                   /home/travis/build/cc65/cc65/asminc/errno.inc(10)
     vsnprintf.o               /home/travis/build/cc65/cc65/asminc/errno.inc(10)
-    read.o                    /home/travis/build/cc65/cc65/asminc/errno.inc(10)
 __errno (errno.o):
     _seterrno.o               /home/travis/build/cc65/cc65/asminc/errno.inc(7)
 __hextab (_hextab.o):
     ltoa.o                    common/ltoa.s(10)
 __longminstr (_longminstr.o):
     ltoa.o                    common/ltoa.s(10)
-__mappederrno (_mappederrno.o):
-    write.o                   /home/travis/build/cc65/cc65/asminc/errno.inc(10)
-    read.o                    /home/travis/build/cc65/cc65/asminc/errno.inc(10)
 __oserror (_oserror.o):
-    _mappederrno.o            /home/travis/build/cc65/cc65/asminc/errno.inc(7)
     _directerrno.o            /home/travis/build/cc65/cc65/asminc/errno.inc(7)
-    write.o                   /home/travis/build/cc65/cc65/asminc/errno.inc(7)
-    read.o                    /home/travis/build/cc65/cc65/asminc/errno.inc(7)
-__osmaperrno (oserror.o):
-    _mappederrno.o            /home/travis/build/cc65/cc65/asminc/errno.inc(8)
 __printf (_printf.o):
     vsnprintf.o               common/vsnprintf.s(10)
-    vfprintf.o                common/vfprintf.s(10)
-__s0_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(45)
-__s0_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(46)
-__s0_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(43)
-__s0_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(44)
-__s1_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(49)
-__s1_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(50)
-__s1_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(47)
-__s1_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(48)
-__s2_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(53)
-__s2_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(54)
-__s2_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(51)
-__s2_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(52)
-__s3_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(57)
-__s3_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(58)
-__s3_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(55)
-__s3_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(56)
-__s4_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(61)
-__s4_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(62)
-__s4_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(59)
-__s4_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(60)
-__s5_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(65)
-__s5_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(66)
-__s5_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(63)
-__s5_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(64)
-__s6_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(69)
-__s6_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(70)
-__s6_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(67)
-__s6_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(68)
-__s7_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(73)
-__s7_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(74)
-__s7_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(71)
-__s7_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(72)
-__s_hix_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(75)
-__s_next_interrupt (asteroids.o):
-    interrupt.o               src/interrupt.s(76)
-__s_splitcurr (asteroids.o):
-    interrupt.o               src/interrupt.s(41)
-__s_splitmax (asteroids.o):
-    interrupt.o               src/interrupt.s(42)
 __seterrno (_seterrno.o):
-    _mappederrno.o            /home/travis/build/cc65/cc65/asminc/errno.inc(9)
     _directerrno.o            /home/travis/build/cc65/cc65/asminc/errno.inc(9)
-    fwrite.o                  /home/travis/build/cc65/cc65/asminc/errno.inc(9)
-_fgetc (fgetc.o):
-    getchar.o                 ../libwrk/c64/getchar.s(14)
-_frameTrigger (asteroids.o):
-    interrupt.o               src/interrupt.s(39)
-_fwrite (fwrite.o):
-    vfprintf.o                common/vfprintf.s(10)
-_getchar (getchar.o):
-    asteroids.o               src/asteroids.s(40)
-_interrupt2 (interrupt.o):
-    asteroids.o               src/asteroids.s(45)
+_frameflag (multi.o):
+    asteroids.o               src/asteroids.s(52)
+_initraster (multi.o):
+    asteroids.o               src/asteroids.s(53)
+_initsprites (multi.o):
+    asteroids.o               src/asteroids.s(54)
 _ltoa (ltoa.o):
     _printf.o                 common/_printf.s(12)
 _main (asteroids.o):
     callmain.o                runtime/callmain.s(11)
 _memcpy (memcpy.o):
     vsnprintf.o               common/vsnprintf.s(10)
-_printf (printf.o):
-    asteroids.o               src/asteroids.s(41)
-_read (read.o):
-    fgetc.o                   ../libwrk/c64/fgetc.s(14)
-_s0_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(7)
-_s0_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(8)
-_s0_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(5)
-_s0_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(6)
-_s1_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(11)
-_s1_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(12)
-_s1_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(9)
-_s1_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(10)
-_s2_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(15)
-_s2_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(16)
-_s2_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(13)
-_s2_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(14)
-_s3_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(19)
-_s3_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(20)
-_s3_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(17)
-_s3_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(18)
-_s4_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(23)
-_s4_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(24)
-_s4_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(21)
-_s4_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(22)
-_s5_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(27)
-_s5_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(28)
-_s5_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(25)
-_s5_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(26)
-_s6_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(31)
-_s6_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(32)
-_s6_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(29)
-_s6_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(30)
-_s7_color_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(35)
-_s7_frame (asteroids.o):
-    interrupt.o               src/interrupt.s(36)
-_s7_x_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(33)
-_s7_y_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(34)
-_s_hix_reg (asteroids.o):
-    interrupt.o               src/interrupt.s(37)
-_s_index (asteroids.o):
-    sort.o                    src/sort.s(4)
-_s_next_interrupt (asteroids.o):
-    interrupt.o               src/interrupt.s(38)
-_s_splitcurr (asteroids.o):
-    interrupt.o               src/interrupt.s(3)
-_s_splitmax (asteroids.o):
-    interrupt.o               src/interrupt.s(4)
-_s_y (asteroids.o):
-    sort.o                    src/sort.s(3)
-_sort (sort.o):
-    asteroids.o               src/asteroids.s(44)
+_numsprites (multi.o):
+    asteroids.o               src/asteroids.s(46)
+_sprc (multi.o):
+    asteroids.o               src/asteroids.s(50)
+_sprf (multi.o):
+    asteroids.o               src/asteroids.s(51)
 _sprintf (sprintf.o):
     graphlib.o                src/graphlib.s(26)
 _spriteData (graphlib.o):
-    asteroids.o               src/asteroids.s(43)
-_stdin (_file.o):
-    getchar.o                 ../libwrk/c64/getchar.s(13)
-_stdout (_file.o):
-    printf.o                  common/printf.s(8)
+    asteroids.o               src/asteroids.s(45)
+_sprupdateflag (multi.o):
+    asteroids.o               src/asteroids.s(47)
+_sprx (multi.o):
+    asteroids.o               src/asteroids.s(48)
+_spry (multi.o):
+    asteroids.o               src/asteroids.s(49)
 _strlen (strlen.o):
     _printf.o                 common/_printf.s(13)
 _strlower (strlower.o):
     _printf.o                 common/_printf.s(13)
 _tileData (graphlib.o):
-    asteroids.o               src/asteroids.s(42)
+    asteroids.o               src/asteroids.s(44)
 _ultoa (ltoa.o):
     _printf.o                 common/_printf.s(12)
-_vfprintf (vfprintf.o):
-    printf.o                  common/printf.s(8)
 _vsprintf (vsprintf.o):
     sprintf.o                 common/sprintf.s(8)
-_write (write.o):
-    fwrite.o                  common/fwrite.s(10)
 addysp (addysp.o):
-    fwrite.o                  common/fwrite.s(11)
     sprintf.o                 common/sprintf.s(8)
-    printf.o                  common/printf.s(8)
     incsp6.o                  runtime/incsp6.s(8)
     incsp5.o                  runtime/incsp5.s(8)
     incsp4.o                  runtime/incsp4.s(8)
     incsp3.o                  runtime/incsp3.s(8)
 addysp1 (addysp.o):
-    sub.o                     runtime/sub.s(8)
     and.o                     runtime/and.s(8)
 axlong (axlong.o):
     _printf.o                 common/_printf.s(11)
@@ -676,8 +332,6 @@ callmain (callmain.o):
     crt0.o                    c64/crt0.s(9)
 ctypemaskdirect (ctypemask.o):
     strlower.o                common/strlower.s(14)
-decsp1 (decsp1.o):
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
 decsp3 (decsp3.o):
     graphlib.o                src/graphlib.s(1389)
 decsp4 (decsp4.o):
@@ -688,14 +342,10 @@ decsp6 (decsp6.o):
     _printf.o                 common/_printf.s(11)
 donelib (condes.o):
     crt0.o                    c64/crt0.s(8)
-fdtab (filedes.o):
-    write.o                   cbm/filedes.inc(7)
-    read.o                    cbm/filedes.inc(7)
 incsp2 (incsp2.o):
-    vsnprintf.o               common/vsnprintf.s(9)
     popptr1.o                 runtime/popptr1.s(8)
+    vsnprintf.o               common/vsnprintf.s(9)
 incsp3 (incsp3.o):
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
     graphlib.o                src/graphlib.s(1389)
 incsp4 (incsp4.o):
     graphlib.o                src/graphlib.s(1389)
@@ -704,134 +354,77 @@ incsp5 (incsp5.o):
     graphlib.o                src/graphlib.s(1389)
 incsp6 (incsp6.o):
     vsnprintf.o               common/vsnprintf.s(9)
-    fwrite.o                  common/fwrite.s(11)
-    vfprintf.o                common/vfprintf.s(9)
     graphlib.o                src/graphlib.s(1389)
 initlib (condes.o):
     crt0.o                    c64/crt0.s(8)
 ldaxysp (ldaxsp.o):
     vsnprintf.o               common/vsnprintf.s(9)
-    fwrite.o                  common/fwrite.s(11)
-leaa0sp (leaaxsp.o):
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
-mul8x16 (mul8.o):
-    mul.o                     runtime/mul.s(8)
-mul8x16a (mul8.o):
-    mul.o                     runtime/mul.s(8)
 negeax (lneg.o):
     ltoa.o                    common/ltoa.s(9)
 popax (incsp2.o):
     memcpy.o                  common/memcpy.s(14)
-    vsnprintf.o               common/vsnprintf.s(9)
-    rwcommon.o                cbm/rwcommon.s(9)
     ltoa.o                    common/ltoa.s(9)
     _printf.o                 common/_printf.s(11)
+    vsnprintf.o               common/vsnprintf.s(9)
 popptr1 (popptr1.o):
     memcpy.o                  common/memcpy.s(14)
-    udiv.o                    runtime/udiv.s(9)
-    rwcommon.o                cbm/rwcommon.s(9)
-    mul8.o                    runtime/mul8.s(9)
-    mul.o                     runtime/mul.s(9)
     ltoa.o                    common/ltoa.s(9)
 ptr1 (zeropage.o):
-    memcpy.o                  common/memcpy.s(15)
-    write.o                   cbm/write.s(11)
-    vsnprintf.o               common/vsnprintf.s(11)
-    udiv.o                    runtime/udiv.s(10)
     strlower.o                common/strlower.s(13)
-    read.o                    cbm/read.s(13)
     popptr1.o                 runtime/popptr1.s(9)
-    mul8.o                    runtime/mul8.s(10)
-    mul.o                     runtime/mul.s(10)
+    memcpy.o                  common/memcpy.s(15)
     ltoa.o                    common/ltoa.s(11)
-    fwrite.o                  common/fwrite.s(14)
     _printf.o                 /home/travis/build/cc65/cc65/asminc/zeropage.inc(12)
+    vsnprintf.o               common/vsnprintf.s(11)
     zerobss.o                 common/zerobss.s(9)
-    vfprintf.o                common/vfprintf.s(11)
     sprintf.o                 common/sprintf.s(9)
-    printf.o                  common/printf.s(9)
     graphlib.o                src/graphlib.s(11)
     asteroids.o               src/asteroids.s(11)
 ptr2 (zeropage.o):
-    memcpy.o                  common/memcpy.s(15)
-    write.o                   cbm/write.s(11)
     strlower.o                common/strlower.s(13)
     strlen.o                  common/strlen.s(12)
-    rwcommon.o                cbm/rwcommon.s(10)
-    read.o                    cbm/read.s(13)
+    memcpy.o                  common/memcpy.s(15)
     ltoa.o                    common/ltoa.s(11)
     _printf.o                 /home/travis/build/cc65/cc65/asminc/zeropage.inc(12)
 ptr3 (zeropage.o):
     memcpy.o                  common/memcpy.s(15)
-    write.o                   cbm/write.s(11)
-    rwcommon.o                cbm/rwcommon.s(10)
-    read.o                    cbm/read.s(13)
     ltoa.o                    common/ltoa.s(11)
-ptr4 (zeropage.o):
-    udiv.o                    runtime/udiv.s(10)
-    mul8.o                    runtime/mul8.s(10)
-    mul.o                     runtime/mul.s(10)
 push1 (push1.o):
     _printf.o                 common/_printf.s(11)
-    vfprintf.o                common/vfprintf.s(9)
 pusha (pusha.o):
     graphlib.o                src/graphlib.s(1389)
 pusha0 (pushax.o):
     push1.o                   runtime/push1.s(8)
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
     graphlib.o                src/graphlib.s(1389)
     graphlib.o                src/graphlib.s(1389)
-    asteroids.o               src/asteroids.s(2445)
-    asteroids.o               src/asteroids.s(2445)
 pushax (pushax.o):
-    fwrite.o                  common/fwrite.s(11)
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
-    callmain.o                runtime/callmain.s(11)
     _printf.o                 common/_printf.s(11)
-    printf.o                  common/printf.s(8)
+    callmain.o                runtime/callmain.s(11)
     graphlib.o                src/graphlib.s(1389)
     graphlib.o                src/graphlib.s(1389)
     graphlib.o                src/graphlib.s(1389)
     graphlib.o                src/graphlib.s(1389)
-    asteroids.o               src/asteroids.s(2445)
 pusheax (lpush.o):
     _printf.o                 common/_printf.s(11)
 pushw0sp (pushwsp.o):
     vsprintf.o                common/vsprintf.s(8)
-pushwysp (pushwsp.o):
-    fwrite.o                  common/fwrite.s(11)
-    vfprintf.o                common/vfprintf.s(9)
 regbank (zeropage.o):
-    regswap2.o                runtime/regswap2.s(8)
-    fgetc.o                   ../libwrk/c64/fgetc.s(10)
     _printf.o                 /home/travis/build/cc65/cc65/asminc/zeropage.inc(14)
-regswap2 (regswap2.o):
-    fgetc.o                   ../libwrk/c64/fgetc.s(95)
-rwcommon (rwcommon.o):
-    write.o                   cbm/write.s(10)
-    read.o                    cbm/read.s(11)
 sp (zeropage.o):
-    memcpy.o                  common/memcpy.s(15)
-    decsp1.o                  runtime/decsp1.s(8)
-    vsnprintf.o               common/vsnprintf.s(11)
-    staxsp.o                  runtime/staxsp.s(8)
-    regswap2.o                runtime/regswap2.s(8)
-    pushwsp.o                 runtime/pushwsp.s(8)
     popptr1.o                 runtime/popptr1.s(9)
+    memcpy.o                  common/memcpy.s(15)
     lpush.o                   runtime/lpush.s(13)
-    leaaxsp.o                 runtime/leaaxsp.s(8)
     ldaxsp.o                  runtime/ldaxsp.s(8)
     incsp2.o                  runtime/incsp2.s(8)
-    fgetc.o                   ../libwrk/c64/fgetc.s(10)
     decsp6.o                  runtime/decsp6.s(8)
-    addysp.o                  runtime/addysp.s(8)
     _printf.o                 /home/travis/build/cc65/cc65/asminc/zeropage.inc(11)
-    vfprintf.o                common/vfprintf.s(11)
-    sub.o                     runtime/sub.s(9)
+    vsnprintf.o               common/vsnprintf.s(11)
+    staxsp.o                  runtime/staxsp.s(8)
+    pushwsp.o                 runtime/pushwsp.s(8)
+    addysp.o                  runtime/addysp.s(8)
     sprintf.o                 common/sprintf.s(9)
     pushax.o                  runtime/pushax.s(8)
     pusha.o                   runtime/pusha.s(8)
-    printf.o                  common/printf.s(9)
     decsp4.o                  runtime/decsp4.s(8)
     decsp3.o                  runtime/decsp3.s(8)
     crt0.o                    /home/travis/build/cc65/cc65/asminc/zeropage.inc(11)
@@ -839,7 +432,6 @@ sp (zeropage.o):
     graphlib.o                src/graphlib.s(10)
 sreg (zeropage.o):
     lneg.o                    runtime/lneg.s(11)
-    udiv.o                    runtime/udiv.s(10)
     ltoa.o                    common/ltoa.s(11)
     lpush.o                   runtime/lpush.s(13)
     axlong.o                  runtime/axlong.s(9)
@@ -849,25 +441,10 @@ sreg (zeropage.o):
 staxysp (staxsp.o):
     vsprintf.o                common/vsprintf.s(8)
 tmp1 (zeropage.o):
-    read.o                    cbm/read.s(13)
-    mul.o                     runtime/mul.s(10)
     ltoa.o                    common/ltoa.s(11)
     _printf.o                 /home/travis/build/cc65/cc65/asminc/zeropage.inc(13)
-tmp2 (zeropage.o):
-    rwcommon.o                cbm/rwcommon.s(10)
-    read.o                    cbm/read.s(13)
-tmp3 (zeropage.o):
-    read.o                    cbm/read.s(13)
 tosanda0 (and.o):
     graphlib.o                src/graphlib.s(1389)
-tossuba0 (sub.o):
-    asteroids.o               src/asteroids.s(2445)
-tosudivax (udiv.o):
-    fwrite.o                  common/fwrite.s(12)
-tosumulax (mul.o):
-    fwrite.o                  common/fwrite.s(12)
-unittab (filedes.o):
-    read.o                    cbm/filedes.inc(8)
 vsnprintf (vsnprintf.o):
     vsprintf.o                common/vsprintf.s(9)
 zerobss (zerobss.o):
