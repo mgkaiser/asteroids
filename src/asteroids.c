@@ -121,12 +121,12 @@ int main (void)
     // Rocks
     spry[0] = 0;
     spry[1] = 50;
-    //spry[2] = 80;
-    //spry[3] = 120;
+    spry[2] = 80;
+    spry[3] = 120;
     spry[4] = 20;
     spry[5] = 72;
-    //spry[6] = 110;
-    //spry[7] = 133;
+    spry[6] = 110;
+    spry[7] = 133;
 
     // shots
     sprx[numsprites - 4] = 85;
