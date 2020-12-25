@@ -1,17 +1,17 @@
 Modules list:
 -------------
 asteroids.o:
-    CODE              Offs=000000  Size=0002B2  Align=00001  Fill=0000
+    CODE              Offs=000000  Size=00048D  Align=00001  Fill=0000
     BSS               Offs=000000  Size=0000C6  Align=00001  Fill=0000
 graphlib.o:
-    CODE              Offs=0002B2  Size=0003D3  Align=00001  Fill=0000
+    CODE              Offs=00048D  Size=0003D3  Align=00001  Fill=0000
     RODATA            Offs=000000  Size=000003  Align=00001  Fill=0000
     BSS               Offs=0000C6  Size=00001C  Align=00001  Fill=0000
     DATA              Offs=000000  Size=000271  Align=00001  Fill=0000
 multi.o:
-    CODE              Offs=000685  Size=000301  Align=00001  Fill=0000
+    CODE              Offs=000860  Size=000301  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_directerrno.o):
-    CODE              Offs=000986  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=000B61  Size=00000A  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_hextab.o):
     RODATA            Offs=000003  Size=000010  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_longminstr.o):
@@ -19,22 +19,22 @@ C:\C64\cc65-snapshot-win32\lib/c64.lib(_longminstr.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_oserror.o):
     BSS               Offs=0000E2  Size=000001  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_printf.o):
-    CODE              Offs=000990  Size=0003A5  Align=00001  Fill=0000
+    CODE              Offs=000B6B  Size=0003A5  Align=00001  Fill=0000
     BSS               Offs=0000E3  Size=00002B  Align=00001  Fill=0000
     DATA              Offs=000271  Size=000003  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(_seterrno.o):
-    CODE              Offs=000D35  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=000F10  Size=000009  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(addysp.o):
-    CODE              Offs=000D3E  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=000F19  Size=00000E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(and.o):
-    CODE              Offs=000D4C  Size=000010  Align=00001  Fill=0000
+    CODE              Offs=000F27  Size=000010  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(axlong.o):
-    CODE              Offs=000D5C  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000F37  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(callmain.o):
-    CODE              Offs=000D69  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=000F44  Size=000017  Align=00001  Fill=0000
     DATA              Offs=000274  Size=000004  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(condes.o):
-    CODE              Offs=000D80  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=000F5B  Size=00000C  Align=00001  Fill=0000
     DATA              Offs=000278  Size=000025  Align=00001  Fill=0000
     ONCE              Offs=000000  Size=00000C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(crt0.o):
@@ -44,69 +44,69 @@ C:\C64\cc65-snapshot-win32\lib/c64.lib(crt0.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ctype.o):
     RODATA            Offs=00001F  Size=00008B  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ctypemask.o):
-    CODE              Offs=000D8C  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=000F67  Size=00001E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp3.o):
-    CODE              Offs=000DAA  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000F85  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp4.o):
-    CODE              Offs=000DB7  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000F92  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(decsp6.o):
-    CODE              Offs=000DC4  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=000F9F  Size=00000D  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(errno.o):
     BSS               Offs=00010E  Size=000002  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(exehdr.o):
     EXEHDR            Offs=000000  Size=00000C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp2.o):
-    CODE              Offs=000DD1  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=000FAC  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp3.o):
-    CODE              Offs=000DE7  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000FC2  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp4.o):
-    CODE              Offs=000DEC  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000FC7  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp5.o):
-    CODE              Offs=000DF1  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000FCC  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(incsp6.o):
-    CODE              Offs=000DF6  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=000FD1  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(kernal.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ldaxsp.o):
-    CODE              Offs=000DFB  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=000FD6  Size=000009  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(lneg.o):
-    CODE              Offs=000E04  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=000FDF  Size=00001E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(loadaddr.o):
     LOADADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(lpush.o):
-    CODE              Offs=000E22  Size=000021  Align=00001  Fill=0000
+    CODE              Offs=000FFD  Size=000021  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(ltoa.o):
-    CODE              Offs=000E43  Size=000095  Align=00001  Fill=0000
+    CODE              Offs=00101E  Size=000095  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(makebool.o):
-    CODE              Offs=000ED8  Size=00002C  Align=00001  Fill=0000
+    CODE              Offs=0010B3  Size=00002C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(memcpy.o):
-    CODE              Offs=000F04  Size=00003C  Align=00001  Fill=0000
+    CODE              Offs=0010DF  Size=00003C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(popptr1.o):
-    CODE              Offs=000F40  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00111B  Size=00000E  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(push1.o):
-    CODE              Offs=000F4E  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=001129  Size=000005  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pusha.o):
-    CODE              Offs=000F53  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=00112E  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pushax.o):
-    CODE              Offs=000F69  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=001144  Size=00001A  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(pushwsp.o):
-    CODE              Offs=000F83  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=00115E  Size=00001C  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(sprintf.o):
-    CODE              Offs=000F9F  Size=00002B  Align=00001  Fill=0000
+    CODE              Offs=00117A  Size=00002B  Align=00001  Fill=0000
     BSS               Offs=000110  Size=000001  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(status.o):
 C:\C64\cc65-snapshot-win32\lib/c64.lib(staxsp.o):
-    CODE              Offs=000FCA  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=0011A5  Size=00000B  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(strlen.o):
-    CODE              Offs=000FD5  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=0011B0  Size=000016  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(strlower.o):
-    CODE              Offs=000FEB  Size=000027  Align=00001  Fill=0000
+    CODE              Offs=0011C6  Size=000027  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(vsnprintf.o):
-    CODE              Offs=001012  Size=0000DA  Align=00001  Fill=0000
+    CODE              Offs=0011ED  Size=0000DA  Align=00001  Fill=0000
     DATA              Offs=00029D  Size=000008  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(vsprintf.o):
-    CODE              Offs=0010EC  Size=000012  Align=00001  Fill=0000
+    CODE              Offs=0012C7  Size=000012  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(zerobss.o):
-    CODE              Offs=0010FE  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=0012D9  Size=000023  Align=00001  Fill=0000
 C:\C64\cc65-snapshot-win32\lib/c64.lib(zeropage.o):
     ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
 
@@ -119,58 +119,58 @@ ZEROPAGE              000002  00001B  00001A  00001
 LOADADDR              0007FF  000800  000002  00001
 EXEHDR                000801  00080C  00000C  00001
 STARTUP               00080D  00083F  000033  00001
-CODE                  000840  001960  001121  00001
-RODATA                001961  001A0A  0000AA  00001
-DATA                  001A0B  001CAF  0002A5  00001
-INIT                  001CB0  001CCB  00001C  00001
-BSS                   001CCC  001DDC  000111  00001
-ONCE                  001CCC  001CF1  000026  00001
+CODE                  000840  001B3B  0012FC  00001
+RODATA                001B3C  001BE5  0000AA  00001
+DATA                  001BE6  001E8A  0002A5  00001
+INIT                  001E8B  001EA6  00001C  00001
+BSS                   001EA7  001FB7  000111  00001
+ONCE                  001EA7  001ECC  000026  00001
 
 
 Exports list by name:
 ---------------------
 BSOUT                     00FFD2 RLA    ST                        000090 RLZ    
-__BSS_RUN__               001CCC RLA    __BSS_SIZE__              000111 REA    
-__CONSTRUCTOR_COUNT__     000000 REA    __CONSTRUCTOR_TABLE__     001CF2 RLA    
-__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      001A0B RLA    
+__BSS_RUN__               001EA7 RLA    __BSS_SIZE__              000111 REA    
+__CONSTRUCTOR_COUNT__     000000 REA    __CONSTRUCTOR_TABLE__     001ECD RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      001BE6 RLA    
 __EXEHDR__                000001 REA    __HEADER_LAST__           00080D RLA    
 __HIMEM__                 00D000 REA    __LOADADDR__              000001 REA    
 __MAIN_SIZE__             00C7F3 REA    __MAIN_START__            00080D RLA    
-__ONCE_RUN__              001CCC RLA    __STACKSIZE__             000800 REA    
-__STARTUP__               000001 REA    __ctype                   001980 RLA    
-__ctypeidx                00198B RLA    __directerrno             0011C6 RLA    
-__errno                   001DDA RLA    __hextab                  001964 RLA    
-__longminstr              001974 RLA    __oserror                 001DAE RLA    
-__printf                  0012C3 RLA    __seterrno                001575 RLA    
-_frameflag                00112C RLA    _initraster               000EC5 RLA    
-_initsprites              000EE9 RLA    _ltoa                     00169B RLA    
-_main                     0008DB RLA    _memcpy                   001744 RLA    
-_numsprites               000002 REZ    _sprc                     00106B RLA    
-_sprf                     00108B RLA    _sprintf                  0017DF RLA    
-_spriteData               001A11 RLA    _sprupdateflag            000003 REZ    
-_sprx                     00102B RLA    _spry                     00104B RLA    
-_strlen                   001815 RLA    _strlower                 00182B RLA    
-_tileData                 001A0D RLA    _ultoa                    0016DC RLA    
-_vsprintf                 00192C RLA    addysp                    00157F RLA    
-addysp1                   00157E RLA    axlong                    00159C RLA    
-axulong                   0015A2 RLA    boolult                   001737 RLA    
-callmain                  0015A9 RLA    ctypemaskdirect           0015D0 RLA    
-decsp3                    0015EA RLA    decsp4                    0015F7 RLA    
-decsp6                    001604 RLA    donelib                   0015C0 RLA    
-incsp2                    001619 RLA    incsp3                    001627 RLA    
-incsp4                    00162C RLA    incsp5                    001631 RLA    
-incsp6                    001636 RLA    initlib                   001CCC RLA    
-ldaxysp                   00163D RLA    negeax                    001644 RLA    
-popax                     001611 RLA    popptr1                   001780 RLA    
+__ONCE_RUN__              001EA7 RLA    __STACKSIZE__             000800 REA    
+__STARTUP__               000001 REA    __ctype                   001B5B RLA    
+__ctypeidx                001B66 RLA    __directerrno             0013A1 RLA    
+__errno                   001FB5 RLA    __hextab                  001B3F RLA    
+__longminstr              001B4F RLA    __oserror                 001F89 RLA    
+__printf                  00149E RLA    __seterrno                001750 RLA    
+_frameflag                001307 RLA    _initraster               0010A0 RLA    
+_initsprites              0010C4 RLA    _ltoa                     001876 RLA    
+_main                     0008DB RLA    _memcpy                   00191F RLA    
+_numsprites               000002 REZ    _sprc                     001246 RLA    
+_sprf                     001266 RLA    _sprintf                  0019BA RLA    
+_spriteData               001BEC RLA    _sprupdateflag            000003 REZ    
+_sprx                     001206 RLA    _spry                     001226 RLA    
+_strlen                   0019F0 RLA    _strlower                 001A06 RLA    
+_tileData                 001BE8 RLA    _ultoa                    0018B7 RLA    
+_vsprintf                 001B07 RLA    addysp                    00175A RLA    
+addysp1                   001759 RLA    axlong                    001777 RLA    
+axulong                   00177D RLA    boolult                   001912 RLA    
+callmain                  001784 RLA    ctypemaskdirect           0017AB RLA    
+decsp3                    0017C5 RLA    decsp4                    0017D2 RLA    
+decsp6                    0017DF RLA    donelib                   00179B RLA    
+incsp2                    0017F4 RLA    incsp3                    001802 RLA    
+incsp4                    001807 RLA    incsp5                    00180C RLA    
+incsp6                    001811 RLA    initlib                   001EA7 RLA    
+ldaxysp                   001818 RLA    negeax                    00181F RLA    
+popax                     0017EC RLA    popptr1                   00195B RLA    
 ptr1                      00000A RLZ    ptr2                      00000C RLZ    
-ptr3                      00000E RLZ    push1                     00178E RLA    
-pusha                     001797 RLA    pusha0                    0017AB RLA    
-pushax                    0017AD RLA    pusheax                   00166B RLA    
-pushw0sp                  0017C3 RLA    regbank                   000016 RLZ    
+ptr3                      00000E RLZ    push1                     001969 RLA    
+pusha                     001972 RLA    pusha0                    001986 RLA    
+pushax                    001988 RLA    pusheax                   001846 RLA    
+pushw0sp                  00199E RLA    regbank                   000016 RLZ    
 sp                        000002 RLZ    sreg                      000004 RLZ    
-staxysp                   00180C RLA    tmp1                      000012 RLZ    
-tosanda0                  00158C RLA    vsnprintf                 001855 RLA    
-zerobss                   00193E RLA    
+staxysp                   0019E7 RLA    tmp1                      000012 RLZ    
+tosanda0                  001767 RLA    vsnprintf                 001A30 RLA    
+zerobss                   001B19 RLA    
 
 
 Exports list by value:
@@ -185,36 +185,36 @@ tmp1                      000012 RLZ    regbank                   000016 RLZ
 ST                        000090 RLZ    __BSS_SIZE__              000111 REA    
 __STACKSIZE__             000800 REA    __HEADER_LAST__           00080D RLA    
 __MAIN_START__            00080D RLA    _main                     0008DB RLA    
-_initraster               000EC5 RLA    _initsprites              000EE9 RLA    
-_sprx                     00102B RLA    _spry                     00104B RLA    
-_sprc                     00106B RLA    _sprf                     00108B RLA    
-_frameflag                00112C RLA    __directerrno             0011C6 RLA    
-__printf                  0012C3 RLA    __seterrno                001575 RLA    
-addysp1                   00157E RLA    addysp                    00157F RLA    
-tosanda0                  00158C RLA    axlong                    00159C RLA    
-axulong                   0015A2 RLA    callmain                  0015A9 RLA    
-donelib                   0015C0 RLA    ctypemaskdirect           0015D0 RLA    
-decsp3                    0015EA RLA    decsp4                    0015F7 RLA    
-decsp6                    001604 RLA    popax                     001611 RLA    
-incsp2                    001619 RLA    incsp3                    001627 RLA    
-incsp4                    00162C RLA    incsp5                    001631 RLA    
-incsp6                    001636 RLA    ldaxysp                   00163D RLA    
-negeax                    001644 RLA    pusheax                   00166B RLA    
-_ltoa                     00169B RLA    _ultoa                    0016DC RLA    
-boolult                   001737 RLA    _memcpy                   001744 RLA    
-popptr1                   001780 RLA    push1                     00178E RLA    
-pusha                     001797 RLA    pusha0                    0017AB RLA    
-pushax                    0017AD RLA    pushw0sp                  0017C3 RLA    
-_sprintf                  0017DF RLA    staxysp                   00180C RLA    
-_strlen                   001815 RLA    _strlower                 00182B RLA    
-vsnprintf                 001855 RLA    _vsprintf                 00192C RLA    
-zerobss                   00193E RLA    __hextab                  001964 RLA    
-__longminstr              001974 RLA    __ctype                   001980 RLA    
-__ctypeidx                00198B RLA    __DESTRUCTOR_TABLE__      001A0B RLA    
-_tileData                 001A0D RLA    _spriteData               001A11 RLA    
-initlib                   001CCC RLA    __BSS_RUN__               001CCC RLA    
-__ONCE_RUN__              001CCC RLA    __CONSTRUCTOR_TABLE__     001CF2 RLA    
-__oserror                 001DAE RLA    __errno                   001DDA RLA    
+_initraster               0010A0 RLA    _initsprites              0010C4 RLA    
+_sprx                     001206 RLA    _spry                     001226 RLA    
+_sprc                     001246 RLA    _sprf                     001266 RLA    
+_frameflag                001307 RLA    __directerrno             0013A1 RLA    
+__printf                  00149E RLA    __seterrno                001750 RLA    
+addysp1                   001759 RLA    addysp                    00175A RLA    
+tosanda0                  001767 RLA    axlong                    001777 RLA    
+axulong                   00177D RLA    callmain                  001784 RLA    
+donelib                   00179B RLA    ctypemaskdirect           0017AB RLA    
+decsp3                    0017C5 RLA    decsp4                    0017D2 RLA    
+decsp6                    0017DF RLA    popax                     0017EC RLA    
+incsp2                    0017F4 RLA    incsp3                    001802 RLA    
+incsp4                    001807 RLA    incsp5                    00180C RLA    
+incsp6                    001811 RLA    ldaxysp                   001818 RLA    
+negeax                    00181F RLA    pusheax                   001846 RLA    
+_ltoa                     001876 RLA    _ultoa                    0018B7 RLA    
+boolult                   001912 RLA    _memcpy                   00191F RLA    
+popptr1                   00195B RLA    push1                     001969 RLA    
+pusha                     001972 RLA    pusha0                    001986 RLA    
+pushax                    001988 RLA    pushw0sp                  00199E RLA    
+_sprintf                  0019BA RLA    staxysp                   0019E7 RLA    
+_strlen                   0019F0 RLA    _strlower                 001A06 RLA    
+vsnprintf                 001A30 RLA    _vsprintf                 001B07 RLA    
+zerobss                   001B19 RLA    __hextab                  001B3F RLA    
+__longminstr              001B4F RLA    __ctype                   001B5B RLA    
+__ctypeidx                001B66 RLA    __DESTRUCTOR_TABLE__      001BE6 RLA    
+_tileData                 001BE8 RLA    _spriteData               001BEC RLA    
+initlib                   001EA7 RLA    __BSS_RUN__               001EA7 RLA    
+__ONCE_RUN__              001EA7 RLA    __CONSTRUCTOR_TABLE__     001ECD RLA    
+__oserror                 001F89 RLA    __errno                   001FB5 RLA    
 __MAIN_SIZE__             00C7F3 REA    __HIMEM__                 00D000 REA    
 BSOUT                     00FFD2 RLA    
 

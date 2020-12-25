@@ -70,7 +70,7 @@ int main (void)
     initsprites();
     initraster();
         
-    numsprites = 12;
+    numsprites = 20;
     for (i = 0; i < numsprites; i++)
     {
         sprx[i] = 0xff;
@@ -85,10 +85,11 @@ int main (void)
         sprdctry[i] = sprdmaxy[i];     
         if(sprc[i] == 0) sprc[i]++;   
     }
-    for (i = 0; i < 4; i++)
+    spry[MAX_SPRITE + 1] = 0xff;
+    for (i = 0; i < 2; i++)
     {
         // Starting X/Y coordinates 
-        sprx[i] = 70;        
+        sprx[i] = 30;        
         spry[i] = i;        
         
         // X/Y movement
@@ -96,11 +97,53 @@ int main (void)
         sprdy[i] = 1;
 
         // X/Y speed.  Bigger is slower
-        sprdmaxx[i] = 3;
-        sprdmaxy[i] = 2;    
+        sprdmaxx[i] = i;
+        sprdmaxy[i] = 1;    
         sprdctrx[i] = sprdmaxx[i];
         sprdctry[i] = sprdmaxy[i];        
     }
+    for (i = 4; i < 6; i++)
+    {
+        // Starting X/Y coordinates 
+        sprx[i] = 90;                
+        
+        // X/Y movement
+        sprdx[i] = -1;
+        sprdy[i] = -1;
+
+        // X/Y speed.  Bigger is slower
+        sprdmaxx[i] = i - 4;
+        sprdmaxy[i] = 1;
+        sprdctrx[i] = sprdmaxx[i];
+        sprdctry[i] = sprdmaxy[i];        
+    }
+
+    // Rocks
+    spry[0] = 0;
+    spry[1] = 50;
+    //spry[2] = 80;
+    //spry[3] = 120;
+    spry[4] = 20;
+    spry[5] = 72;
+    //spry[6] = 110;
+    //spry[7] = 133;
+
+    // shots
+    sprx[numsprites - 4] = 85;
+    spry[numsprites - 4] = 100;
+    sprc[numsprites - 4] = COLOR_WHITE;
+    sprx[numsprites - 3] = 90;
+    spry[numsprites - 3] = 100;
+    sprc[numsprites - 3] = COLOR_WHITE;
+    sprx[numsprites - 2] = 95;
+    spry[numsprites - 2] = 100;
+    sprc[numsprites - 2] = COLOR_WHITE;
+    
+    // player
+    sprx[numsprites - 1] = 80;
+    spry[numsprites - 1] = 100;
+    sprc[numsprites - 1] = COLOR_RED;
+
     sprupdateflag = 1;  
             
     while(1) 
@@ -113,6 +156,14 @@ int main (void)
                 {
                     sprdctrx[i] = sprdmaxx[i];
                     sprx[i] += sprdx[i];
+                    if (sprx[i] > 190)
+                    { 
+                        sprx[i] = 3;
+                    }
+                    else if (sprx[i] < 3)
+                    {
+                        sprx[i] = 190;
+                    }
                     sprupdateflag = 1;  
                 }
                 else

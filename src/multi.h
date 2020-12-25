@@ -7,7 +7,7 @@ extern unsigned char sprupdateflag;
 #pragma zpsym ("sprupdateflag");
 
 extern unsigned char sprx[MAX_SPRITE];
-extern unsigned char spry[MAX_SPRITE];
+extern unsigned char spry[MAX_SPRITE+1];
 extern unsigned char sprc[MAX_SPRITE];
 extern unsigned char sprf[MAX_SPRITE];
 extern unsigned char frameflag;
