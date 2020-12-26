@@ -86,7 +86,7 @@ int main (void)
         if(sprc[i] == 0) sprc[i]++;   
     }
     spry[MAX_SPRITE + 1] = 0xff;
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < 4; i++)
     {
         // Starting X/Y coordinates 
         sprx[i] = 30;        
@@ -102,7 +102,7 @@ int main (void)
         sprdctrx[i] = sprdmaxx[i];
         sprdctry[i] = sprdmaxy[i];        
     }
-    for (i = 4; i < 6; i++)
+    for (i = 4; i < 8; i++)
     {
         // Starting X/Y coordinates 
         sprx[i] = 90;                
