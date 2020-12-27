@@ -61,31 +61,38 @@ void clearTileAndSprite()
     }
 }
 
-int main (void)
-{          
-    static unsigned char i;    
+void setupSprites(void)
+{
+    static unsigned char i;
+
+    // All y coords start at 0xff
+    for (i = 0; i <= MAX_SPRITE; i++) spry[i] = 0xff;
     
-    clearTileAndSprite();        
-    initVic();
-    initsprites();
-    initraster();
-        
     numsprites = 20;
     for (i = 0; i < numsprites; i++)
     {
+        // Set the coords
         sprx[i] = 0xff;
         spry[i] = 0xff;
+
+        // Set the colors, don't use black
         sprc[i] = i;
+        if(sprc[i] == 0) sprc[i]++;   
+
+        // Nothing moving yet
         sprdx[i] = 0;
         sprdy[i] = 0;        
+
+        // Set the frame
         sprf[i] = 0x80;
+
+        // Movement speed is 1 step each frame
         sprdmaxx[i] = 0;
         sprdmaxy[i] = 0;    
         sprdctrx[i] = sprdmaxx[i];
-        sprdctry[i] = sprdmaxy[i];     
-        if(sprc[i] == 0) sprc[i]++;   
+        sprdctry[i] = sprdmaxy[i];             
     }
-    spry[MAX_SPRITE + 1] = 0xff;
+    
     for (i = 0; i < 4; i++)
     {
         // Starting X/Y coordinates 
@@ -129,13 +136,13 @@ int main (void)
     spry[7] = 133;
 
     // shots
-    sprx[numsprites - 4] = 85;
+    sprx[numsprites - 4] = 95;
     spry[numsprites - 4] = 100;
     sprc[numsprites - 4] = COLOR_WHITE;
-    sprx[numsprites - 3] = 90;
+    sprx[numsprites - 3] = 110;
     spry[numsprites - 3] = 100;
     sprc[numsprites - 3] = COLOR_WHITE;
-    sprx[numsprites - 2] = 95;
+    sprx[numsprites - 2] = 125;
     spry[numsprites - 2] = 100;
     sprc[numsprites - 2] = COLOR_WHITE;
     
@@ -143,45 +150,103 @@ int main (void)
     sprx[numsprites - 1] = 80;
     spry[numsprites - 1] = 100;
     sprc[numsprites - 1] = COLOR_RED;
+    //sprdx[numsprites - 1] = -1;
+    //sprdmaxx[numsprites - 1] = 30;
+    //sprdctrx[numsprites - 1] = sprdmaxx[numsprites - 1];
+    
 
     sprupdateflag = 1;  
-            
+}
+
+void doSpriteFrame(void)
+{
+    static unsigned char i;    
+
+    for(i = 0; i < numsprites; i++)
+    {
+        if (sprdctrx[i] == 0)
+        {
+            sprdctrx[i] = sprdmaxx[i];
+            sprx[i] += sprdx[i];
+
+            if (sprx[i] > 190)
+            { 
+                sprx[i] = 3;
+            }
+            else if (sprx[i] < 3)
+            {
+                sprx[i] = 190;
+            }
+
+            sprupdateflag = 1;  
+        }
+        else
+        {
+            --sprdctrx[i];
+        }
+        
+        if (sprdctry[i] == 0)
+        {
+            sprdctry[i] = sprdmaxy[i];
+            spry[i] += sprdy[i];
+            sprupdateflag = 1;  
+        }
+        else
+        {
+            --sprdctry[i];
+        }                
+    }          
+}
+
+void readJoystick(void)
+{        
+    if (!(CIA1.pra & 1)) doUp();    
+    if (!(CIA1.pra & 2)) doDown();    
+    if (!(CIA1.pra & 4)) doLeft();
+    if (!(CIA1.pra & 8)) doRight();    
+    if (!(CIA1.pra & 16)) doButton();      
+}
+
+void doLeft(void)
+{
+    sprdx[18] = -1;
+}
+
+void doRight(void)
+{
+    sprdx[18] = 1;
+}
+
+void doUp(void)
+{
+
+}
+
+void doDown(void)
+{
+
+}
+
+void doButton(void)
+{
+    sprdx[18] = 0;
+}
+
+int main (void)
+{                  
+    clearTileAndSprite();        
+    initVic();
+    initsprites();
+    initraster();
+
+    setupSprites();
+                            
     while(1) 
     {             
         if (frameflag)
-        {            
-            for(i=0; i<numsprites; i++)
-            {
-                if (sprdctrx[i] == 0)
-                {
-                    sprdctrx[i] = sprdmaxx[i];
-                    sprx[i] += sprdx[i];
-                    if (sprx[i] > 190)
-                    { 
-                        sprx[i] = 3;
-                    }
-                    else if (sprx[i] < 3)
-                    {
-                        sprx[i] = 190;
-                    }
-                    sprupdateflag = 1;  
-                }
-                else
-                {
-                    --sprdctrx[i];
-                }
-                
-                if (sprdctry[i] == 0)
-                {
-                    sprdctry[i] = sprdmaxy[i];
-                    spry[i] += sprdy[i];
-                    sprupdateflag = 1;  
-                }
-                else
-                {
-                    --sprdctry[i];
-                }                
-            }          
+        {    
+            readJoystick();        
+            doSpriteFrame();
             frameflag = 0;
         }
     }
