@@ -15,6 +15,7 @@
 #include "joystick.h"
 #include "charset.h"
 #include "spriteframe.h"
+#include "asteroids_sprites.h"
 #include "asteroids.h"
 
 // Stuff to support interrupt
@@ -31,20 +32,15 @@ unsigned char alienShot2;
 unsigned char alienShot3;
 
 void clearTileAndSprite()
-{
-    static unsigned int x; 
-
+{    
     // Load the character set
     copyChars(charset_chr_len, charset_chr);    
 
-    // Clear the screen
-    for (x = 0; x < 0x3fe; x++ ) screenData[x] = 0x20;
+    // Clear the screen    
+    clearScreen();
 
     // Load the sprite data
-    for (x = 0; x < 128; x ++)
-    {
-        spriteData[x] = 0xaa;        
-    }    
+    copySprites(asteroids_sprites_spr_len, asteroids_sprites_spr);
 }
 
 void startLevel(void)
@@ -99,7 +95,7 @@ void startLevel(void)
         sprdy[i] = 0;        
 
         // Set the frame
-        sprf[i] = 0x80;
+        sprf[i] = 0x89;
 
         // Movement speed is 1 step each frame
         sprdmaxx[i] = 0;
@@ -151,31 +147,35 @@ void startLevel(void)
     spry[7] = 133;
 
     // shots        
-    sprx[playerShot1] = 95;
-    spry[playerShot1] = 100;
+    sprx[playerShot1] = 0xff;
+    spry[playerShot1] = 0xff;
     sprc[playerShot1] = COLOR_WHITE;
     sprdx[playerShot1] = 1;
     sprfrmtolive[playerShot1] = 120;
+    sprf[playerShot1] = 0x8d;
     
-    sprx[playerShot2] = 110;
-    spry[playerShot2] = 100;
+    sprx[playerShot2] = 0xff;
+    spry[playerShot2] = 0xff;
     sprc[playerShot2] = COLOR_WHITE;
     sprdx[playerShot2] = 1;
     sprfrmtolive[playerShot2] = 120;
+    sprf[playerShot2] = 0x8d;
     
-    sprx[playerShot3] = 125;
-    spry[playerShot3] = 100;
+    sprx[playerShot3] = 0xff;
+    spry[playerShot3] = 0xff;
     sprc[playerShot3] = COLOR_WHITE;
     sprdx[playerShot3] = 1;
     sprfrmtolive[playerShot3] = 120;
+    sprf[playerShot3] = 0x8d;
     
     // player    
     sprx[player] = 80;
     spry[player] = 100;
     sprc[player] = COLOR_RED;
     sprdx[player] = -1;
-    sprdmaxx[player] = 10;
-    sprdctrx[player] = sprdmaxx[player];        
+    sprdmaxx[player] = 5;
+    sprdctrx[player] = sprdmaxx[player];  
+    sprf[player] = 0x94;      
 
     sprupdateflag = 1;  
 }
@@ -183,21 +183,26 @@ void startLevel(void)
 void doLeft(unsigned char flag)
 {     
     sprdx[player] = -1;    
+    sprf[player] = 0x94;      
+
+    // Rotate left
 }
 
 void doRight(unsigned char flag)
 {        
     sprdx[player] = 1;
+    sprf[player] = 0x90;      
+    // Rotate right
 }
 
 void doUp(unsigned char flag)
 {
-
+    // Do thrust
 }
 
 void doDown(unsigned char flag)
 {
-
+    // Hyperspace
 }
 
 void doButton(unsigned char flag)
@@ -226,6 +231,8 @@ void doButton(unsigned char flag)
             {
                 newshot = playerShot3;
             }
+
+            // Shot should appear in front of player's ship and move on the same vector as the ship as fast as possible.
 
             // If we found one set a new shot
             if (newshot != 0)

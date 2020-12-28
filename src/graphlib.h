@@ -16,6 +16,7 @@ extern void copySprites(unsigned int sprDataLen, char* sprData);
 extern void draw_string_char(unsigned char x, unsigned char y, unsigned char ch);
 extern void draw_string(unsigned char x, unsigned char y, unsigned char w, char *ch);
 extern void initVic(void);
+extern void clearScreen(void);
 
 #define screenxyToAddress(screenx, screeny) (times40[screeny] + screenx)
 #define spriteyToscreeny(spritey) (spriteyToscreenyTable[spritey])

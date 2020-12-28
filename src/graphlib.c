@@ -44,6 +44,12 @@ void initVic(void)
     VIC.addr = 0xec;
 }
 
+void clearScreen(void)
+{
+    static unsigned int x; 
+    for (x = 0; x < 0x3fe; x++ ) screenData[x] = 0x20;
+}
+
 // Copy the screen data to the buffers
 void copyScreen(unsigned int screenDataLen, char* scrnData, char* colData)
 {
