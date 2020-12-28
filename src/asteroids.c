@@ -18,6 +18,11 @@
 // Stuff to support interrupt
 unsigned char frameTrigger;
 
+unsigned char player;
+unsigned char playerShot1;
+unsigned char playerShot2;
+unsigned char playerShot3;
+
 unsigned char sprdx[MAX_SPRITE];
 unsigned char sprdy[MAX_SPRITE];
 unsigned char sprdctrx[MAX_SPRITE];
@@ -144,33 +149,36 @@ void setupSprites(void)
     spry[6] = 110;
     spry[7] = 133;
 
-    // shots
-    sprx[numsprites - 4] = 95;
-    spry[numsprites - 4] = 100;
-    sprc[numsprites - 4] = COLOR_WHITE;
-    sprdx[numsprites - 4] = 1;
-    sprfrmtolive[numsprites - 4] = 120;
+    // shots    
+    playerShot1 = numsprites - 4;    
+    sprx[playerShot1] = 95;
+    spry[playerShot1] = 100;
+    sprc[playerShot1] = COLOR_WHITE;
+    sprdx[playerShot1] = 1;
+    sprfrmtolive[playerShot1] = 120;
 
-    sprx[numsprites - 3] = 110;
-    spry[numsprites - 3] = 100;
-    sprc[numsprites - 3] = COLOR_WHITE;
-    sprdx[numsprites - 3] = 1;
-    sprfrmtolive[numsprites - 3] = 120;
+    playerShot2 = numsprites - 3;    
+    sprx[playerShot2] = 110;
+    spry[playerShot2] = 100;
+    sprc[playerShot2] = COLOR_WHITE;
+    sprdx[playerShot2] = 1;
+    sprfrmtolive[playerShot2] = 120;
 
-    sprx[numsprites - 2] = 125;
-    spry[numsprites - 2] = 100;
-    sprc[numsprites - 2] = COLOR_WHITE;
-    sprdx[numsprites - 2] = 1;
-    sprfrmtolive[numsprites - 2] = 120;
+    playerShot3 = numsprites - 2;
+    sprx[playerShot3] = 125;
+    spry[playerShot3] = 100;
+    sprc[playerShot3] = COLOR_WHITE;
+    sprdx[playerShot3] = 1;
+    sprfrmtolive[playerShot3] = 120;
     
     // player
-    sprx[numsprites - 1] = 80;
-    spry[numsprites - 1] = 100;
-    sprc[numsprites - 1] = COLOR_RED;
-    //sprdx[numsprites - 1] = -1;
-    //sprdmaxx[numsprites - 1] = 30;
-    //sprdctrx[numsprites - 1] = sprdmaxx[numsprites - 1];
-    
+    player = numsprites - 1;
+    sprx[player] = 80;
+    spry[player] = 100;
+    sprc[player] = COLOR_RED;
+    sprdx[player] = -1;
+    sprdmaxx[player] = 10;
+    sprdctrx[player] = sprdmaxx[player];        
 
     sprupdateflag = 1;  
 }
@@ -230,10 +238,7 @@ unsigned char joyButtonFlag = 0;
 unsigned char joyLeftFlag = 0;
 unsigned char joyRightFlag = 0;
 void readJoystick(void)
-{        
-    screenData[2] = CIA1.pra;
-    screenData[3] = joyButtonFlag;    
-
+{            
     if (!(CIA1.pra & 1)) doUp(1);    
     if (!(CIA1.pra & 2)) doDown(1);    
         
@@ -272,16 +277,13 @@ void readJoystick(void)
 }
 
 void doLeft(unsigned char flag)
-{   
-    screenData[0] = flag; 
-    sprdx[numsprites - 1] = -1;
-    ++sprc[numsprites-1];
+{     
+    sprdx[player] = -1;    
 }
 
 void doRight(unsigned char flag)
-{
-    screenData[1] = flag;
-    sprdx[numsprites - 1] = 1;
+{        
+    sprdx[player] = 1;
 }
 
 void doUp(unsigned char flag)
@@ -298,25 +300,24 @@ unsigned char doButtonFlag = 0;
 void doButton(unsigned char flag)
 {
     static unsigned char newshot = 0;
-    
-        
+            
     if (flag)
     {    
         if (doButtonFlag == 0)
         {
             newshot = 0;
 
-            if (spry[numsprites - 2] == 0xff)
+            if (spry[playerShot1] == 0xff)
             {
-                newshot = numsprites - 2;
+                newshot = playerShot1;
             }
-            else if (spry[numsprites - 3] == 0xff)
+            else if (spry[playerShot2] == 0xff)
             {
-                newshot = numsprites - 3;
+                newshot = playerShot2;
             }
-            else if (spry[numsprites - 4] == 0xff)
+            else if (spry[playerShot3] == 0xff)
             {
-                newshot = numsprites - 4;
+                newshot = playerShot3;
             }
 
             if (newshot != 0)
