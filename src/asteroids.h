@@ -4,9 +4,9 @@
 //extern unsigned char s_y[];
 //extern unsigned char s_index[];
 
-extern void doLeft(void);
-extern void doRight(void);
-extern void doUp(void);
-extern void doDown(void);
-extern void doButton(void);
+extern void doLeft(unsigned char flag);
+extern void doRight(unsigned char flag);
+extern void doUp(unsigned char flag);
+extern void doDown(unsigned char flag);
+extern void doButton(unsigned char flag);
 

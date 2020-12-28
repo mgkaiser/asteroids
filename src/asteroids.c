@@ -12,6 +12,7 @@
 #include <c64.h>
 #include "graphlib.h"
 #include "multi.h"
+#include "maze_tiles.h"
 #include "asteroids.h"
 
 // Stuff to support interrupt
@@ -23,6 +24,7 @@ unsigned char sprdctrx[MAX_SPRITE];
 unsigned char sprdmaxx[MAX_SPRITE];
 unsigned char sprdctry[MAX_SPRITE];
 unsigned char sprdmaxy[MAX_SPRITE];
+unsigned char sprfrmtolive[MAX_SPRITE];
 
 void initVic(void)
 {
@@ -50,15 +52,14 @@ void clearTileAndSprite()
 {
     static unsigned int x; 
 
-    for (x = 0; x < 2048; x ++)
-    {
-        tileData[x] = 0;
-    }
+    copyChars(maze_tiles_chr_len, maze_tiles_chr);    
 
     for (x = 0; x < 128; x ++)
     {
         spriteData[x] = 0xaa;        
     }
+
+    for (x = 0; x < 0x3fe; x++ ) screenData[x] = 0x20;
 }
 
 void setupSprites(void)
@@ -66,7 +67,15 @@ void setupSprites(void)
     static unsigned char i;
 
     // All y coords start at 0xff
-    for (i = 0; i <= MAX_SPRITE; i++) spry[i] = 0xff;
+    for (i = 0; i <= MAX_SPRITE; i++) 
+    {
+        spry[i] = 0xff;
+        sprfrmtolive[i] = 0xff;
+        sprdmaxx[i] = 0;
+        sprdmaxy[i] = 0;    
+        sprdctrx[i] = sprdmaxx[i];
+        sprdctry[i] = sprdmaxy[i];  
+    }
     
     numsprites = 20;
     for (i = 0; i < numsprites; i++)
@@ -139,12 +148,20 @@ void setupSprites(void)
     sprx[numsprites - 4] = 95;
     spry[numsprites - 4] = 100;
     sprc[numsprites - 4] = COLOR_WHITE;
+    sprdx[numsprites - 4] = 1;
+    sprfrmtolive[numsprites - 4] = 120;
+
     sprx[numsprites - 3] = 110;
     spry[numsprites - 3] = 100;
     sprc[numsprites - 3] = COLOR_WHITE;
+    sprdx[numsprites - 3] = 1;
+    sprfrmtolive[numsprites - 3] = 120;
+
     sprx[numsprites - 2] = 125;
     spry[numsprites - 2] = 100;
     sprc[numsprites - 2] = COLOR_WHITE;
+    sprdx[numsprites - 2] = 1;
+    sprfrmtolive[numsprites - 2] = 120;
     
     // player
     sprx[numsprites - 1] = 80;
@@ -164,8 +181,8 @@ void doSpriteFrame(void)
 
     for(i = 0; i < numsprites; i++)
     {
-        if (sprdctrx[i] == 0)
-        {
+        if (sprdctrx[i] == 0 )
+        {            
             sprdctrx[i] = sprdmaxx[i];
             sprx[i] += sprdx[i];
 
@@ -178,7 +195,7 @@ void doSpriteFrame(void)
                 sprx[i] = 190;
             }
 
-            sprupdateflag = 1;  
+            sprupdateflag = 1;              
         }
         else
         {
@@ -186,50 +203,140 @@ void doSpriteFrame(void)
         }
         
         if (sprdctry[i] == 0)
-        {
+        {            
             sprdctry[i] = sprdmaxy[i];
             spry[i] += sprdy[i];
-            sprupdateflag = 1;  
+            sprupdateflag = 1;              
         }
         else
         {
             --sprdctry[i];
-        }                
+        }    
+
+        if (sprfrmtolive[i] != 0xff)            
+        {
+            --sprfrmtolive[i];
+            if (sprfrmtolive[i] == 0)
+            {
+                sprfrmtolive[i] = 0xff;
+                sprx[i] = 0xff;
+                spry[i] = 0xff;
+            }
+        }
     }          
 }
 
+unsigned char joyButtonFlag = 0;
+unsigned char joyLeftFlag = 0;
+unsigned char joyRightFlag = 0;
 void readJoystick(void)
 {        
-    if (!(CIA1.pra & 1)) doUp();    
-    if (!(CIA1.pra & 2)) doDown();    
-    if (!(CIA1.pra & 4)) doLeft();
-    if (!(CIA1.pra & 8)) doRight();    
-    if (!(CIA1.pra & 16)) doButton();      
+    screenData[2] = CIA1.pra;
+    screenData[3] = joyButtonFlag;    
+
+    if (!(CIA1.pra & 1)) doUp(1);    
+    if (!(CIA1.pra & 2)) doDown(1);    
+        
+    if (!(CIA1.pra & 4)) 
+    {
+        joyLeftFlag = 1;
+        doLeft(1);
+    }
+    if ((CIA1.pra & 4) && joyLeftFlag) 
+    {
+        joyLeftFlag = 0;
+        doLeft(0);
+    }
+    
+    if (!(CIA1.pra & 8)) 
+    {
+        joyRightFlag = 1;
+        doRight(1);    
+    }
+    if ((CIA1.pra & 8) && joyRightFlag) 
+    {
+        joyRightFlag = 0;
+        doRight(0);    
+    }
+    
+    if (!(CIA1.pra & 16)) 
+    {
+        joyButtonFlag = 1;
+        doButton(1);      
+    }
+    if ((CIA1.pra & 16) && joyButtonFlag) 
+    {
+        joyButtonFlag = 0;
+        doButton(0); 
+    }     
 }
 
-void doLeft(void)
-{
-    sprdx[18] = -1;
+void doLeft(unsigned char flag)
+{   
+    screenData[0] = flag; 
+    sprdx[numsprites - 1] = -1;
+    ++sprc[numsprites-1];
 }
 
-void doRight(void)
+void doRight(unsigned char flag)
 {
-    sprdx[18] = 1;
+    screenData[1] = flag;
+    sprdx[numsprites - 1] = 1;
 }
 
-void doUp(void)
-{
-
-}
-
-void doDown(void)
+void doUp(unsigned char flag)
 {
 
 }
 
-void doButton(void)
+void doDown(unsigned char flag)
 {
-    sprdx[18] = 0;
+
+}
+
+unsigned char doButtonFlag = 0;
+void doButton(unsigned char flag)
+{
+    static unsigned char newshot = 0;
+    
+        
+    if (flag)
+    {    
+        if (doButtonFlag == 0)
+        {
+            newshot = 0;
+
+            if (spry[numsprites - 2] == 0xff)
+            {
+                newshot = numsprites - 2;
+            }
+            else if (spry[numsprites - 3] == 0xff)
+            {
+                newshot = numsprites - 3;
+            }
+            else if (spry[numsprites - 4] == 0xff)
+            {
+                newshot = numsprites - 4;
+            }
+
+            if (newshot != 0)
+            {
+                sprx[newshot] = 95;
+                spry[newshot] = 100;
+                sprc[newshot] = COLOR_WHITE;
+                sprdx[newshot] = 1;
+                sprfrmtolive[newshot] = 120;
+            }
+        
+            doButtonFlag = 1;
+        }
+    }
+    else
+    {
+        doButtonFlag = 0;
+    }
+    
+        
 }
 
 int main (void)

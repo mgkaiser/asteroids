@@ -14,20 +14,20 @@ MAXSPR          = 32            ;Maximum number of sprites
 
 _numsprites     = $02           ;Number of sprites that the main program wants
                                 ;to pass to the sprite sorter
-_sprupdateflag  = $03           ;Main program must write a nonzero value here
+_sprupdateflag  = $fb           ;Main program must write a nonzero value here
                                 ;when it wants new sprites to be displayed
 IRQ1LINE        = $fc           ;This is the place on screen where the sorting
                                 ;IRQ happens
-IRQ2LINE        = $2a           ;This is where sprite displaying begins...
+IRQ2LINE        = $fd           ;This is where sprite displaying begins...
 
-sortedsprites   = $04           ;Number of sorted sprites for the raster
+sortedsprites   = $fe           ;Number of sorted sprites for the raster
                                 ;interrupt
-tempvariable    = $05           ;Just a temp variable used by the raster
+tempvariable    = $52           ;Just a temp variable used by the raster
                                 ;interrupt
-sprirqcounter   = $06           ;Sprite counter used by the interrupt
+sprirqcounter   = $a7           ;Sprite counter used by the interrupt
 
-sortorder       = $10           ;Order-table for sorting. Needs as many bytes
-sortorderlast   = $2f           ;as there are sprites.
+sortorder       = $a8           ;Order-table for sorting. Needs as many bytes
+sortorderlast   = $aa           ;as there are sprites.
 
 .code
 
