@@ -1,0 +1,1 @@
+#define ROTATE_SPEED 6

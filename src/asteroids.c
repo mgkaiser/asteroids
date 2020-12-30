@@ -25,6 +25,7 @@ unsigned char player;
 unsigned char playerShot1;
 unsigned char playerShot2;
 unsigned char playerShot3;
+signed char playerRotation;
 
 unsigned char alien;
 unsigned char alienShot1;
@@ -42,6 +43,15 @@ void clearTileAndSprite()
     // Load the sprite data
     copySprites(asteroids_sprites_spr_len, asteroids_sprites_spr);
 }
+
+// addRock = new rock at specified location.  Randomly pick one of the 4 images for the rock size specified.
+// splitRock = Big -> 2x Medium, Medium -> 2x Small, Small -> Gone
+// randomVector = set new random vector for rock
+// randomLocation = set new random location for rock
+// addPlayerShot = if shots are available add new shot at player location using player vector.
+// playerRotationToSprite = MACRO. Translate the 0-15 rotation of the player to a sprite image.
+// startLevelRocks = place 2-6 rocks into starting location with initial vectors
+// startLevelPlayer = player in center with zero momentum.
 
 void startLevel(void)
 {
@@ -172,27 +182,46 @@ void startLevel(void)
     sprx[player] = 80;
     spry[player] = 100;
     sprc[player] = COLOR_RED;
-    sprdx[player] = -1;
-    sprdmaxx[player] = 5;
-    sprdctrx[player] = sprdmaxx[player];  
-    sprf[player] = 0x94;      
+    //sprdx[player] = -1;
+    //sprdmaxx[player] = 5;
+    //sprdctrx[player] = sprdmaxx[player];  
+    sprf[player] = 0x8e;      
 
     sprupdateflag = 1;  
 }
 
 void doLeft(unsigned char flag)
-{     
-    sprdx[player] = -1;    
-    sprf[player] = 0x94;      
+{   
+    static unsigned char doLeftFlag = 0;  
+    
+    if (doLeftFlag == 0)
+    {
+        ++playerRotation;
+        if (playerRotation > 15) playerRotation = 0;
+        sprf[player] = 0x8e + playerRotation;    
 
-    // Rotate left
+        doLeftFlag = ROTATE_SPEED;
+    }
+
+    --doLeftFlag;
+    
 }
 
 void doRight(unsigned char flag)
-{        
-    sprdx[player] = 1;
-    sprf[player] = 0x90;      
-    // Rotate right
+{   
+    static unsigned char doRightFlag = 0;
+    
+    if (doRightFlag == 0)
+    {
+        --playerRotation;
+        if (playerRotation < 0) playerRotation = 15;
+        sprf[player] = 0x8e + playerRotation;                
+
+        doRightFlag = ROTATE_SPEED;
+    }
+
+    --doRightFlag ;
+    
 }
 
 void doUp(unsigned char flag)
