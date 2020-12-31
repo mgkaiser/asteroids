@@ -61,6 +61,8 @@ void doSpriteFrame(void)
                 sprfrmtolive[i] = 0xff;
                 sprx[i] = 0xff;
                 spry[i] = 0xff;
+                sprdx[i] = 0;
+                sprdy[i] = 0;                
             }
         }
     }          

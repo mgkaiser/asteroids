@@ -27,6 +27,11 @@ unsigned char playerShot2;
 unsigned char playerShot3;
 signed char playerRotation;
 
+unsigned char playershot_dx[] = { 0, 1, 1, 1, 1, 1, 1, 1, 0, -1, -1, -1, -1, -1, -1, -1 };
+unsigned char playershot_dctrx[] = { 31, 19, 9, 2, 0, 2, 9, 19, 31, 19, 9, 2, 0, 2, 9, 19 };
+unsigned char playershot_dy[] = { 1, 1, 1, 1, 0, -1, -1, -1, -1, -1, -1, -1, 0, 1, 1, 1 };
+unsigned char playershot_dctry[] = { 0, 2, 9, 19, 31, 19, 9, 2, 0, 2, 9, 19, 31, 19, 9, 2 };
+
 unsigned char alien;
 unsigned char alienShot1;
 unsigned char alienShot2;
@@ -71,7 +76,7 @@ void startLevel(void)
     playerShot1 = numsprites - 4;       // 28    
     playerShot2 = numsprites - 3;       // 29    
     playerShot3 = numsprites - 2;       // 30
-    player = numsprites - 1;            // 31
+    player = numsprites - 1;            // 31 
 
     // Player in center, no movement
     // No player shots
@@ -266,10 +271,15 @@ void doButton(unsigned char flag)
             // If we found one set a new shot
             if (newshot != 0)
             {
-                sprx[newshot] = 95;
-                spry[newshot] = 100;
+                sprx[newshot] = sprx[player];
+                spry[newshot] = spry[player];
                 sprc[newshot] = COLOR_WHITE;
-                sprdx[newshot] = 1;
+                sprdx[newshot] = playershot_dx[playerRotation];
+                sprdmaxx[newshot] = playershot_dctrx[playerRotation];
+                sprdy[newshot] = playershot_dy[playerRotation];
+                sprdmaxy[newshot] = playershot_dctry[playerRotation];                
+                sprdctrx[newshot] = sprdmaxx[newshot];
+                sprdctry[newshot] = sprdmaxy[newshot];        
                 sprfrmtolive[newshot] = 120;
             }
         
