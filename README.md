@@ -19,3 +19,4 @@ copyassets.cmd
 ```
 retroassembler.exe -g .\src\main.asm
 ```
+test
