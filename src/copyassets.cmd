@@ -65,4 +65,11 @@ convert ship15.png -trim -scale 16x16! ship15.png
 convert ship8.png ship7.png ship6.png ship5.png ship4.png ship3.png ship2.png ship1.png ship0.png ship15.png ship14.png ship13.png ship12.png ship11.png ship10.png ship9.png +append ship.png
 convert ship.png -colors 16 -depth 4 ship.png
 X16PngConverter ship.png -sprites -h 16 -w 16 -t $ff000000 -p bin
+
 del ship*.png
+copy *.bin ..\bin
+del *.bin
+
+
+
+

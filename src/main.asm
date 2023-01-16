@@ -3,6 +3,7 @@
 .encoding "ascii","upper"
 
 .setting "AfterBuild", "cmd /c copy {0} C:\\x16emu_win-r41\\drive\\ASTEROIDS\\ASTEROIDS"
+.setting "AfterBuild", "cmd /c copy {0} ..\\ASTEROIDS.PRG"
 .setting "HandleLongBranch", true
 
 .include "16bit.asm"
