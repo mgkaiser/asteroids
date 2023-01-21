@@ -25,25 +25,30 @@
 ; Aliens!!!
 ; Backround sound
 ; Extra guy at 10000
-; Player can die - Remember thrustR to 0 when new player spawns
+; Clear linked list in initGame so it can be used to reset game
+; Reset game after game over
+; Display game over
 
 ; ----------------------------------------
 ; Global data
 ; ----------------------------------------
 .data
-  oldIrq          .word     $0000
-  frame           .byte     FALSE
-  frameCounter    .byte     $00
-  l               .storage  $0004, $00
-  rockCount       .byte     $00
-  score           .storage  $0003, $00
-  level           .byte     $01
-  rockResetCount  .byte     $00
-  lives           .byte     $00
-  joy             .word     $0000
-  xPos            .word     $0000
-  yPos            .word     $0000
-  pShotCount      .byte     $00
+  oldIrq            .word     $0000
+  frame             .byte     FALSE
+  frameCounter      .byte     $00
+  l                 .storage  $0004, $00
+  rockCount         .byte     $00
+  score             .storage  $0003, $00
+  level             .byte     $01
+  rockResetCount    .byte     $00
+  lives             .byte     $00
+  joy               .word     $0000
+  xPos              .word     $0000
+  yPos              .word     $0000
+  pShotCount        .byte     $00
+  gameOver          .byte     $00
+  playerVisible     .byte     $00
+  playerResetCount  .byte     $00  
   
 ; ----------------------------------------
 ; Code 
@@ -125,6 +130,16 @@ interruptHandler:
 
 .function initGame
 
+  ; Clear the linked list
+
+  ; Set Lives to 3
+  ldbai(lives, $03)
+  ldbai(gameOver, FALSE)
+
+  ; Add the player
+  list_AddPlayerShip_Macro(reg15, l, $00a0, $0064) 
+  ldbai(playerVisible, TRUE)
+
   ; Start on level 1
   lda #$01
   sta level    
@@ -137,10 +152,6 @@ interruptHandler:
   sta score+1
   sta score+2
   cld
-
-  ; Set Lives to 3
-  lda #$03
-  sta lives
 
 .endfunction
 
@@ -161,17 +172,13 @@ interruptHandler:
 
 .function initSprites
   .namespace "initSprites"
-    .data
-      result    .word $0000
-      originX   .word $00a0
-      originY   .word $0064            
+    .data    
     .code
 
       ; Enable sprites      
       ldbai(VERA.control, $00)    
       ldbai(VERA.display.video, $61)
 
-      list_AddPlayerShip_Macro(result, l, originX, originY)    
   .namespace
 .endfunction
 
@@ -368,6 +375,31 @@ interruptHandler:
   .namespace
 .endFunction
 
+.function playerHit
+  .namespace "playerHit"
+    .data
+    .code 
+      ; Player explode
+      playSound_macro(SOUND_ZAP, 2)
+
+      ; Decrease player count
+      lda lives
+      dec
+      sta lives
+
+      ; Game Over?
+      cmp #$00
+      bne @notGameOver
+        lda #TRUE
+        sta gameOver      
+      @notGameOver
+
+      ; Remove the player
+      ldbai(playerVisible, FALSE)
+      list_Remove_macro(l, ptr7)      
+  .namespace
+.endfunction
+
 .macro displayDigits(variable, bytes)
 
 .if bytes > 1
@@ -437,10 +469,20 @@ interruptHandler:
       displayDigits(lives, 1)
 
       ; Setup VERA
-      ;ldbai (VERA.control , $00)    
-      ;ldwai (VERA.address, $b100)  
+      ;dbai (VERA.control , $00)    
+      ;ldwai (VERA.address, $b100 + (0 * 6))  
       ;ldbai (VERA.address_hi, $11)       
-      ;displayDigits(pShotCount, 1)
+      ;displayDigits(gameOver, 1)
+
+      ;ldbai (VERA.control , $00)    
+      ;ldwai (VERA.address, $b100 + (1 * 6))  
+      ;ldbai (VERA.address_hi, $11)       
+      ;displayDigits(playerVisible, 1)
+
+      ;ldbai (VERA.control , $00)    
+      ;ldwai (VERA.address, $b100 + (2 * 6))  
+      ;ldbai (VERA.address_hi, $11)       
+      ;displayDigits(playerResetCount, 1)
 
   .namespace
 .endfunction
@@ -524,11 +566,37 @@ interruptHandler:
           lda #00
           sta rockResetCount
       @skipRockReset
+      
+      ; If the game isn't over, skip reset
+      lda gameOver
+      cmp #TRUE
+      beq @SkipPlayerReset
+
+        ; If the player is visible skip reset
+        lda playerVisible
+        cmp #TRUE
+        beq @skipPlayerReset
+
+          ; playerResetCount++
+          inc playerResetCount
+          lda playerResetCount
+
+          ; if playerResetCOunt < 100 skip reset
+          cmp #100
+          bne @skipPlayerReset
+
+            list_AddPlayerShip_Macro(reg15, l, $00a0, $0064) 
+            ldbai(playerResetCount, $00)
+            ldbai(playerVisible, TRUE)            
+
+      @skipPlayerReset
 
       ; Decrease the rock delay
       dec largeRockDelay
       dec medRockDelay
       dec smallRockDelay           
+
+      displayScore()
 
       ; Move First
       list_First_macro(ptr7, l)      
@@ -542,10 +610,7 @@ interruptHandler:
 
         ; Is the node type PLAYER?
         cpwbi_ofs (ptr7, node_nodetype, PLAYER)
-        bne @skipPlayer
-
-          ; Display the score - Do this on the player node because the player node always exists and we can debug the player
-          displayScore()
+        bne @skipPlayer          
 
           ; if playerTurnCountdown == 0
           lda playerTurnCountdown
@@ -632,8 +697,7 @@ interruptHandler:
                 jmp @thrustThetaEndIf
 
               @thrustThetaElse
-
-                ; Accelerate TODO: Consider incrementing thrustR once frameReset == 0
+                
                 ldy #node_frameReset
                 lda (ptr7),y
                 cmp#$00
@@ -771,12 +835,9 @@ interruptHandler:
               
               ; Did we collide with it?
               objectsCollide()
-              beq @NoCollidePlayerCol
-
-                ; Remove the ship
-                ; Decrement lives
-                ; Set timer to replace ship
-                
+              beq @NoCollidePlayerCol                
+                playerHit()
+                jmp @donePlayerCol                                
               @NoCollidePlayerCol
                         
             ; Move on to the next item, don't process
