@@ -25,9 +25,8 @@
 ; Aliens!!!
 ; Backround sound
 ; Extra guy at 10000
-; Clear linked list in initGame so it can be used to reset game
-; Reset game after game over
-; Display game over
+; Display game over - Tilemap to display "GAME OVER - press button to start"
+; Do better job of resetting rocks
 
 ; ----------------------------------------
 ; Global data
@@ -131,14 +130,14 @@ interruptHandler:
 .function initGame
 
   ; Clear the linked list
+  ; TODO: Delete elements one by one
+  list_init_macro(l)
+  mempool_init()
 
   ; Set Lives to 3
-  ldbai(lives, $03)
-  ldbai(gameOver, FALSE)
-
-  ; Add the player
-  list_AddPlayerShip_Macro(reg15, l, $00a0, $0064) 
-  ldbai(playerVisible, TRUE)
+  ldbai(lives, $00)
+  ldbai(gameOver, TRUE)    
+  ldbai(playerVisible, FALSE)
 
   ; Start on level 1
   lda #$01
@@ -374,31 +373,6 @@ interruptHandler:
       
   .namespace
 .endFunction
-
-.function playerHit
-  .namespace "playerHit"
-    .data
-    .code 
-      ; Player explode
-      playSound_macro(SOUND_ZAP, 2)
-
-      ; Decrease player count
-      lda lives
-      dec
-      sta lives
-
-      ; Game Over?
-      cmp #$00
-      bne @notGameOver
-        lda #TRUE
-        sta gameOver      
-      @notGameOver
-
-      ; Remove the player
-      ldbai(playerVisible, FALSE)
-      list_Remove_macro(l, ptr7)      
-  .namespace
-.endfunction
 
 .macro displayDigits(variable, bytes)
 
@@ -771,7 +745,7 @@ interruptHandler:
 
             lda buttonLatch         ; If latch is not pressed         
             bne @buttonEndIf
-
+              
               lda pShotCount        ; If shotCount is less than max
               cmp #pShotCountMax
               bcs @buttonEndIf
@@ -796,7 +770,7 @@ interruptHandler:
                 ; make sound
                 playSound_macro(SOUND_SHOOT, 0)                
 
-            jmp @buttonEndif
+                jmp @buttonEndif
           @buttonElse               ; Button 1 is up
             lda buttonLatchCountdown
             bne @buttonLatchElse        ; If buttonLatchCountdown == 0            
@@ -836,7 +810,26 @@ interruptHandler:
               ; Did we collide with it?
               objectsCollide()
               beq @NoCollidePlayerCol                
-                playerHit()
+
+                ; Player explode
+                playSound_macro(SOUND_ZAP, 2)
+
+                ; Decrease player count
+                lda lives
+                dec
+                sta lives
+
+                ; Remove the player
+                ldbai(playerVisible, FALSE)
+                list_Remove_macro(l, ptr7)      
+
+                ; Game Over?
+                lda lives
+                cmp #$00
+                bne @notGameOver
+                  initGame()   
+                  jmp @loop   
+                @notGameOver
                 jmp @donePlayerCol                                
               @NoCollidePlayerCol
                         
@@ -1106,6 +1099,33 @@ interruptHandler:
         sta smallRockDelay
       @skipSmallRockReset
 
+      ; ButtonPress
+      lda joy
+      and #JOY_BTN_1_MASK          
+      bne @gameRestartEndIf	
+      
+        lda gameOver
+        cmp #TRUE
+        bne @gameRestartEndIf
+
+        ; TODO: Reset the rocks
+        
+        ldbai(gameOver, FALSE)              
+        ldbai(playerVisible, FALSE)
+        ldbai(playerResetCount, 0)
+        lda #$00
+        sta score
+        sta score+1
+        sta score+2
+        ldbai(lives, 3)
+
+        lda #TRUE
+        sta buttonLatch                                         ; Set the latch
+        lda #buttonLatchCountdownMax
+        sta buttonLatchCountdown                                ; Reset the countdown    
+        
+      @gameRestartEndIf      
+
       ; Change Border Color
       ldbai (VERA.control, $00)
       ldbai (VERA.display.border, $02)
@@ -1173,7 +1193,7 @@ interruptHandler:
       sta o1y2+1
       lda (ptr8),Y
       sta o2y1+1
-      sta o2y2+1
+      sta o2y2+1      
 
       ; o1x2 += ptr7->node_spriteWidth
       ; o2x2 += ptr8->node_spriteWidth
